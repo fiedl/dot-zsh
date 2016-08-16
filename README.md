@@ -2,6 +2,8 @@
 
 My zsh configuration. I'm using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and place some overrides in `~/.zsh`.
 
+<img src="screenshots/Bildschirmfoto 2016-08-17 um 01.36.58.png" width="450">
+
 ## Installation
 
 ```bash
