@@ -102,8 +102,32 @@ This requires `brew install cmatrix`.
     ka vlc
 
 
+### [welcome.plugin.zsh](oh-my-zsh-customization/plugins/welcome/welcome.plugin.zsh)
+
+This plugins prints some useful information about the current machine
+when opening a new terminal.
+
+Next to the starfleet sign, of course :)
+
+I've taken this from mooos: https://github.com/idk/moo-skel
+
+
 ### [icecube.plugin.zsh](oh-my-zsh-customization/plugins/icecube/icecube.plugin.zsh)
 
+
+
+### [moo.plugin.zsh](oh-my-zsh-customization/plugins/moo/moo.plugin.zsh)
+
+I have taken this excellent zsh configuration from mooOS, the gnu/linux
+distro of shape shifting, time travelling alien space penguins, https://mooos.org.
+
+The source can be found here: https://github.com/idk/moo-skel
+
+https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys
+Show history
+misc
+control hardware
+more custom commands
 
 
 ### [plattform.plugin.zsh](oh-my-zsh-customization/plugins/plattform/plattform.plugin.zsh)
