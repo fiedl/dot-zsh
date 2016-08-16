@@ -28,8 +28,20 @@ ZSH_THEME="fiedl"
 # well as updates from https://github.com/fiedl/dot-zsh.
 export UPDATE_ZSH_DAYS=1
 
+# Auto-install ~/.oh-my-zsh if missing.
+if [ ! -d $ZSH ]
+then
+  curl -L http://install.ohmyz.sh | sh
+fi
+
+# Auto-install ~/.zsh if missing.
+if [ ! -d ~/.zsh ]
+then
+  git clone git@github.com:fiedl/dot-zsh.git ~/.zsh
+fi
+
 # choose oh-my-zsh plugins
-plugins=(git bundler fiedl icecube plattform)
+plugins=(git bundler fiedl icecube plattform welcome)
 ```
 
 Then, start a new terminal. Done!
