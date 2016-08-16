@@ -19,7 +19,10 @@ else
   NORMAL=""
 fi
 
-printf "${BLUE}🚀\ Updating https://github.com/robbyrussell/oh-my-zsh ... \n${NORMAL}"
+printf "${BLUE}\n🚀 Updating homebrew ... \n${NORMAL}"
+[[ -f `which brew` ]] && brew update
+
+printf "${BLUE}\n🚀 Updating https://github.com/robbyrussell/oh-my-zsh ... \n${NORMAL}"
 cd "$ZSH"
 if git pull --rebase --stat origin master
 then
@@ -28,7 +31,7 @@ else
   printf "${RED}FAILED.${NORMAL}\n"
 fi
 
-printf "${BLUE}\n🚀\ Updating https://github.com/fiedl/dot-zsh ... ${NORMAL}"
+printf "${BLUE}\n🚀 Updating https://github.com/fiedl/dot-zsh ... ${NORMAL}"
 cd ~/.zsh
 if git diff-index --quiet HEAD --
 then
