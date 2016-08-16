@@ -2,7 +2,7 @@
 
 My zsh configuration. I'm using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and place some overrides in `~/.zsh`.
 
-### Installation
+## Installation
 
 ```bash
 # Clone repo
@@ -32,8 +32,79 @@ plugins=(git bundler fiedl icecube plattform)
 
 Then, start a new terminal. Done!
 
-### Update
+## Update
 
 * The update is done regularly via oh-my-zsh.
 * Or, run: `upgrade_oh_my_zsh`
 * Or, run it manually: `cd $HOME/.zsh; git pull`
+
+## Documentation
+
+### fiedl.plugin.zsh
+
+
+#### Updating the zsh configuration
+
+These commands help to sync the zsh configuration up and down.
+Through the oh-my-zsh auto update process, the repo is down-synced
+automatically. This is prevented by uncommited changes in ~/.zsh.
+
+Quickly commit and push local changes:
+
+    zsh-push
+
+Get latest changes by running one of these:
+
+    zsh-pull
+    zsh-update
+
+#### Code grepping
+
+These helpers are useful to find definitions in code or quickly grep for
+expressions.
+
+    def current_user
+    g class User
+
+#### Finding files
+
+Quickly find a file within the current directory.
+
+    f user
+    f user |count
+
+This uses friendly find (ffind), which needs to be installed.
+Mac: `brew install ffind`.
+
+#### Moving files
+
+Move multiple files with wildcards using multimove.
+
+    mmv foo-*.txt foo/*.md
+
+See also:
+http://www.mfasold.net/blog/2008/11/moving-or-renaming-multiple-files/
+
+#### Fun stuff
+
+Play random lcars sound from ~/Music/lcars.
+Requires `brew install mplayer coreutils`.
+
+   lcars
+
+Display the matrix.
+Requires `brew install cmatrix`.
+
+   matrix
+
+#### Killing processes
+
+    ka vlc
+
+
+
+
+
+## Author
+
+(c) 2016, Sebastian Fiedlschuster

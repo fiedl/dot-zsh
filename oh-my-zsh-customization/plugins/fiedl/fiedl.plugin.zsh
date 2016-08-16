@@ -1,5 +1,4 @@
-# Updating the zsh configuration
-# ------------------------------
+# ## Updating the zsh configuration
 #
 # These commands help to sync the zsh configuration up and down.
 # Through the oh-my-zsh auto update process, the repo is down-synced
@@ -9,22 +8,25 @@
 #
 #     zsh-push
 #
-# Get latest changes:
+# Get latest changes by running one of these:
 #
 #     zsh-pull
 #     zsh-update
 
 zsh-push() {
   cd ~/.zsh
+  zsh-update-documentation
   git commit --all --message="Updating zsh configuration at $(date)."
   git push origin master
 }
 zsh-pull() { upgrade_oh_my_zsh } # which also updates ~/.zsh
 zsh-update() { zsh-pull }
+zsh-update-documentation() {
+  ruby $ZSH_CUSTOM/plugins/fiedl/bin/update_documentation.rb
+}
 
 
-# Code grepping
-# -------------
+# ## Code grepping
 #
 # These helpers are useful to find definitions in code or quickly grep for
 # expressions.
@@ -39,8 +41,7 @@ function g () { tput rmam; grep --exclude-dir log --exclude-dir tmp --exclude-di
 function def () { g "def $*"; g "def self.$*" }
 
 
-# Finding files
-# -------------
+# ## Finding files
 #
 # Quickly find a file within the current directory.
 #
@@ -54,8 +55,7 @@ alias f='ffind'
 alias count='wc -l'
 
 
-# Moving files
-# ------------
+# ## Moving files
 #
 # Move multiple files with wildcards using multimove.
 #
@@ -68,14 +68,15 @@ autoload -U zmv
 alias mmv='noglob zmv -W'
 
 
-# Fun stuff
-# ---------
+# ## Fun stuff
 #
 # Play random lcars sound from ~/Music/lcars.
+# Requires `brew install mplayer coreutils`.
 #
 #    lcars
 #
 # Display the matrix.
+# Requires `brew install cmatrix`.
 #
 #    matrix
 
@@ -83,8 +84,7 @@ lcars() { ~/bin/lcars > /dev/null 2>&1 }
 alias matrix='cmatrix -C magenta'
 
 
-# Killing processes
-# -----------------
+# ## Killing processes
 #
 #     ka vlc
 
