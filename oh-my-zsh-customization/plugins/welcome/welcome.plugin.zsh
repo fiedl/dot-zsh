@@ -13,7 +13,7 @@ then
   $HOME/screenfetch-moo -D mooOS
 elif [ -d /var/wingolfsplattform ]
 then
-  screenfetch -a $ZSH_CUSTOM/plugins/welcome/wingolf.zsh
+  $ZSH_CUSTOM/plugins/welcome/screenfetch -a $ZSH_CUSTOM/plugins/welcome/wingolf.zsh
 else
   screenfetch -a $ZSH_CUSTOM/plugins/welcome/starfleet-logo.zsh
 fi
