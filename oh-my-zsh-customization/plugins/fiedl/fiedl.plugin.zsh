@@ -80,7 +80,7 @@ alias mmv='noglob zmv -W'
 #
 #    matrix
 
-lcars() { ~/bin/lcars > /dev/null 2>&1 }
+lcars() { $ZSH_CUSTOM/plugins/fiedl/bin/lcars > /dev/null 2>&1 }
 alias matrix='cmatrix -C magenta'
 
 

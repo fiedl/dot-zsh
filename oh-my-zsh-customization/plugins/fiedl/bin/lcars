@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# run this through apple script via:
+# do shell script "source /Users/fiedl/bin/lcars"
+
+zufall=$(for i in $HOME/Music/lcars/*; do echo $i; done |/usr/local/bin/gshuf -n 1);
+/usr/local/bin/mplayer $zufall >/dev/null &
+
