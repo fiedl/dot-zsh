@@ -116,27 +116,6 @@ This requires `brew install cmatrix`.
     ka vlc
 
 
-### [wingolf.zsh](oh-my-zsh-customization/plugins/welcome/wingolf.zsh)
-
-
-
-### [starfleet-logo.zsh](oh-my-zsh-customization/plugins/welcome/starfleet-logo.zsh)
-
-
-
-### [welcome.plugin.zsh](oh-my-zsh-customization/plugins/welcome/welcome.plugin.zsh)
-
-This plugins prints some useful information about the current machine
-when opening a new terminal.
-
-This is done using [screenfetch](https://github.com/KittyKatt/screenFetch).
-Install with `brew install screenfetch`.
-
-Next to the starfleet sign, of course :)
-
-I've taken this from mooos: https://github.com/idk/moo-skel
-
-
 ### [icecube.plugin.zsh](oh-my-zsh-customization/plugins/icecube/icecube.plugin.zsh)
 
 
@@ -222,6 +201,27 @@ Run specs with selenium rather than phantomjs.
     SELENIUM=true rspec spec/features
     selenium spec/features
     selen spec/features
+
+
+
+### [starfleet-logo.zsh](oh-my-zsh-customization/plugins/welcome/starfleet-logo.zsh)
+
+
+
+### [welcome.plugin.zsh](oh-my-zsh-customization/plugins/welcome/welcome.plugin.zsh)
+
+This plugins prints some useful information about the current machine
+when opening a new terminal.
+
+This is done using [screenfetch](https://github.com/KittyKatt/screenFetch).
+Install with `brew install screenfetch`.
+
+Next to the starfleet sign, of course :)
+
+I've taken this from mooos: https://github.com/idk/moo-skel
+
+
+### [wingolf.zsh](oh-my-zsh-customization/plugins/welcome/wingolf.zsh)
 
 
 
