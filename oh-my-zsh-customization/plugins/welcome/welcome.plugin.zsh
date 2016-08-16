@@ -1,7 +1,14 @@
 # This plugins prints some useful information about the current machine
 # when opening a new terminal.
 #
+# This is done using [screenfetch](https://github.com/KittyKatt/screenFetch).
+# Install with `brew install screenfetch`.
+#
 # Next to the starfleet sign, of course :)
 #
 # I've taken this from mooos: https://github.com/idk/moo-skel
+
+screenfetch -a $ZSH_CUSTOM/plugins/welcome/starfleet-logo.zsh
+
+
 
