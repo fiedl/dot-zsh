@@ -8,7 +8,12 @@
 #
 # I've taken this from mooos: https://github.com/idk/moo-skel
 
-screenfetch -a $ZSH_CUSTOM/plugins/welcome/starfleet-logo.zsh
+if [ -f $HOME/screenfetch-moo ]
+then
+  $HOME/screenfetch-moo -D mooOS
+else
+  screenfetch -a $ZSH_CUSTOM/plugins/welcome/starfleet-logo.zsh
+fi
 
 
 
