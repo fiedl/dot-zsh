@@ -87,15 +87,15 @@ http://www.mfasold.net/blog/2008/11/moving-or-renaming-multiple-files/
 
 #### Fun stuff
 
-Play random lcars sound from ~/Music/lcars.
-Requires `brew install mplayer coreutils`.
+Play random lcars sound from `~/Music/lcars`.
+This requires `brew install mplayer coreutils`.
 
-   lcars
+    lcars
 
 Display the matrix.
-Requires `brew install cmatrix`.
+This requires `brew install cmatrix`.
 
-   matrix
+    matrix
 
 #### Killing processes
 
