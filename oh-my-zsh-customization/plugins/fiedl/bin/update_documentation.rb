@@ -31,9 +31,9 @@ class Documentation
       File.read(filename).split("\n").each do |line|
         if line.strip == "#"
           content += "\n"
-        elsif line.strip.start_with? "# ## "
+        elsif line.start_with? "# ## "
           content += "\n" + line.gsub(/^[ ]*# ## /, '#### ') + "\n"
-        elsif line.strip.start_with? "# "
+        elsif line.start_with? "# "
           content += line.gsub(/^[ ]*# /, "") + "\n"
         else
           nil
