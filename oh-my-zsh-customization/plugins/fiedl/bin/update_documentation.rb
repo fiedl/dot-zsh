@@ -26,7 +26,7 @@ class Documentation
   def comments_from_all_plugin_files
     content = ""
     plugin_files.each do |filename|
-      content += "### #{File.basename(filename)}\n\n"
+      content += "### [#{File.basename(filename)}](#{filename.split('/').last(4).join('/')})\n\n"
 
       File.read(filename).split("\n").each do |line|
         if line.strip == "#"

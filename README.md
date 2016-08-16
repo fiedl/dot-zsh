@@ -40,7 +40,7 @@ Then, start a new terminal. Done!
 
 ## Documentation
 
-### fiedl.plugin.zsh
+### [fiedl.plugin.zsh](oh-my-zsh-customization/plugins/fiedl/fiedl.plugin.zsh)
 
 
 #### Updating the zsh configuration
