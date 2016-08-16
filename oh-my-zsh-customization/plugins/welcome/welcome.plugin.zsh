@@ -11,11 +11,9 @@
 if [ -f $HOME/screenfetch-moo ]
 then
   $HOME/screenfetch-moo -D mooOS
-else if [ -d /var/wingolfsplattform ]
+elif [ -d /var/wingolfsplattform ]
+then
   screenfetch -a $ZSH_CUSTOM/plugins/welcome/wingolf.zsh
 else
   screenfetch -a $ZSH_CUSTOM/plugins/welcome/starfleet-logo.zsh
 fi
-
-
-
