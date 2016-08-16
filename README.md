@@ -106,6 +106,76 @@ This requires `brew install cmatrix`.
 
 
 
+### [plattform.plugin.zsh](oh-my-zsh-customization/plugins/plattform/plattform.plugin.zsh)
+
+These are some helpers for [Rails](https://github.com/rails/rails)
+and [YourPlatform](https://github.com/fiedl/your_platform).
+
+#### Directories
+
+Here are some aliases to jump to directories.
+On the development machine, the projects are expected to be in
+`~/rails`, on the production machine, in `/var`.
+
+    cdw  # wingolfsplattform
+    cdy  # your_platform
+    cdo  # your_platform_ops
+    cdp  # platforms_ops
+    cdm  # your_platform/demo_app/my_platform
+
+#### Rails console
+
+On our production machine, `console` logs in to the platform user
+and runs the rails console.
+
+#### Rails shortcuts
+
+Some shortcuts for bundler:
+
+    be    # bundle exec, with lcars sound ;)
+    bi    # bundle install
+    bu    # bundle update
+
+Shortcut for `bin/rake`:
+
+    r
+
+Shortcut for `bin/rails server`:
+
+    s
+
+When starting `pry` within a rails project, the `config/environment`
+is used automatically. No need to call `pry -r ./config/environment`
+explicitly.
+
+    pry
+
+Ship it! To merge the `master` branch into `production`
+just call `production`.
+
+    production
+
+To generate the platform documentation for `cdw` and open it locally,
+call:
+
+    doc
+
+
+#### Testing
+
+Run `bin/rspec` in an orange-colored tab with lcars sounds.
+
+    rspec
+    rspec spec/models
+
+Run specs with selenium rather than phantomjs.
+
+    SELENIUM=true rspec spec/features
+    selenium spec/features
+    selen spec/features
+
+
+
 
 
 ## Author
