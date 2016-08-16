@@ -102,6 +102,9 @@ This requires `brew install cmatrix`.
     ka vlc
 
 
+### [icecube.plugin.zsh](oh-my-zsh-customization/plugins/icecube/icecube.plugin.zsh)
+
+
 
 
 
