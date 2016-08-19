@@ -56,9 +56,7 @@ zsh-update-documentation() {
 #     zsh-plugin welcome
 #
 zsh-plugin() {
-  if [ ! -d "$ZSH_CUSTOM/plugins/$1" ]; then
-    take "$ZSH_CUSTOM/plugins/$1"
-  fi
+  take "$ZSH_CUSTOM/plugins/$1"
   e "$ZSH_CUSTOM/plugins/$1/$1.plugin.zsh"
 }
 

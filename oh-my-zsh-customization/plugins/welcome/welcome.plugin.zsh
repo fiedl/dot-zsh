@@ -8,12 +8,29 @@
 #
 # I've taken this from mooos: https://github.com/idk/moo-skel
 
-if [ -f $HOME/screenfetch-moo ]
-then
-  $HOME/screenfetch-moo -D mooOS
-elif [ -d /var/wingolfsplattform ]
-then
-  $ZSH_CUSTOM/plugins/welcome/screenfetch -a $ZSH_CUSTOM/plugins/welcome/wingolf.zsh
-else
-  screenfetch -a $ZSH_CUSTOM/plugins/welcome/starfleet-logo.zsh
-fi
+screenfetch_command() {
+  if [ -f $HOME/screenfetch-moo ]; then
+    # The patched version for my moo os machine.
+    $HOME/screenfetch-moo $*
+  elif [ -f /usr/local/bin/screenfetch ]; then
+    # The one installed by homebrew.
+    /usr/local/bin/screenfetch $*
+  else
+    # For external servers, the one from this repo.
+    $ZSH_CUSTOM/plugins/welcome/screenfetch $*
+  fi
+}
+
+screenfetch_logo() {
+  if [ `hostname` = 'fiedl-mbp' ]; then
+    echo "-a $ZSH_CUSTOM/plugins/welcome/starfleet-logo.zsh"
+  elif [ `hostname` = 'fiedl-mbp-2009' ]; then
+    echo "-a $ZSH_CUSTOM/plugins/welcome/starfleet-logo.zsh"
+  elif [ `hostname` = 'arch-mbp-2009' ]; then
+    echo "-D mooOS"
+  elif [ -d /var/wingolfsplattform ]; then
+    echo "-a $ZSH_CUSTOM/plugins/welcome/wingolf-logo.zsh"
+  fi
+}
+
+screenfetch_command `screenfetch_logo`
