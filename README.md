@@ -216,6 +216,10 @@ Or, in German (for parents :-) )
 
 
 
+### [keyboard.plugin.zsh](oh-my-zsh-customization/plugins/keyboard/keyboard.plugin.zsh)
+
+
+
 ### [moo.plugin.zsh](oh-my-zsh-customization/plugins/moo/moo.plugin.zsh)
 
 I have taken this excellent zsh configuration from mooOS, the gnu/linux

@@ -19,8 +19,10 @@ alias suche='search'
 alias installiere='install'
 alias deinstalliere='uninstall'
 
-install_plugin_update() {
-  echo "updating the install plugin"
+alias brew='[[ -f /usr/local/bin/brew ]] && brew'
+
+update_install_plugin() {
+  printf "updating the install plugin\n"
   [[ -f /usr/local/bin/brew ]] && brew tap caskroom/cask
 }
-hooks-add-hook zsh_update install_plugin_update
+on_update update_install_plugin

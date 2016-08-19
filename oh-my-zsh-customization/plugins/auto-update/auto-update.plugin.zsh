@@ -89,6 +89,6 @@ source $HOME/.zsh/tools/check_for_update.zsh
 #
 source "$ZSH_CUSTOM/plugins/auto-update/zsh-hooks.zsh"
 hooks-define-hook zsh_update
-alias hook='hook-add-hook'
+alias hook='hooks-add-hook'
 alias on_update='hook zsh_update'
 

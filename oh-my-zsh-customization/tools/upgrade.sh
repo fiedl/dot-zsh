@@ -24,9 +24,6 @@ printf "${BLUE}\n🚀 Updating homebrew ... \n${NORMAL}"
 
 printf "${BLUE}\n🚀 Updating https://github.com/robbyrussell/oh-my-zsh ... \n${NORMAL}"
 
-echo $ZSH
-echo $OH_MY_ZSH_PATH
-
 if [[ ! -z $OH_MY_ZSH_PATH ]]
 then
   cd "$OH_MY_ZSH_PATH"
