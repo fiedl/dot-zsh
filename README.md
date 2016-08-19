@@ -204,10 +204,6 @@ Run specs with selenium rather than phantomjs.
 
 
 
-### [starfleet-logo.zsh](oh-my-zsh-customization/plugins/welcome/starfleet-logo.zsh)
-
-
-
 ### [welcome.plugin.zsh](oh-my-zsh-customization/plugins/welcome/welcome.plugin.zsh)
 
 This plugins prints some useful information about the current machine
@@ -219,10 +215,6 @@ Install with `brew install screenfetch`.
 Next to the starfleet sign, of course :)
 
 I've taken this from mooos: https://github.com/idk/moo-skel
-
-
-### [wingolf.zsh](oh-my-zsh-customization/plugins/welcome/wingolf.zsh)
-
 
 
 
