@@ -51,9 +51,9 @@ Then, start a new terminal. Done!
 
 ## Update
 
-* The update is done regularly via oh-my-zsh.
-* Or, run: `upgrade_oh_my_zsh`
-* Or, run it manually: `cd $HOME/.zsh; git pull`
+* When starting a terminal, oh-my-zsh will ask you to perform an upgrade, regularly. This will also update `~/.zsh`.
+* Or, run: `zsh-update`.
+* Or, pull changes manually: `cd $HOME/.zsh; git pull`
 
 ## Documentation
 
