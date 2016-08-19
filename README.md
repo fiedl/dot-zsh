@@ -44,7 +44,7 @@ export DISABLE_UPDATE_PROMPT="false"
 export UPDATE_ZSH_DAYS=1
 
 # choose oh-my-zsh plugins
-plugins=(git bundler auto-update fiedl install icecube plattform welcome)
+plugins=(git bundler editor auto-update fiedl install icecube plattform welcome)
 ```
 
 Then, start a new terminal. Done!
@@ -118,10 +118,7 @@ updating into the process, like this:
 
 
 
-### [fiedl.plugin.zsh](oh-my-zsh-customization/plugins/fiedl/fiedl.plugin.zsh)
-
-
-#### Editors
+### [editor.plugin.zsh](oh-my-zsh-customization/plugins/editor/editor.plugin.zsh)
 
 Quickly start a text editor:
 
@@ -132,6 +129,10 @@ Quickly start a text editor:
 If textmate (`mate`) is installed, it will be used as editor.
 Otherwise, `emacs -nw` (in the terminal, not as window).
 Otherwise, `vim`.
+
+
+
+### [fiedl.plugin.zsh](oh-my-zsh-customization/plugins/fiedl/fiedl.plugin.zsh)
 
 
 #### Code grepping
