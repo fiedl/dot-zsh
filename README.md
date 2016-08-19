@@ -44,7 +44,7 @@ export UPDATE_ZSH_DAYS=1
 source $HOME/.zsh/tools/check_for_update.zsh
 
 # choose oh-my-zsh plugins
-plugins=(git bundler fiedl icecube plattform welcome)
+plugins=(git bundler fiedl install icecube plattform welcome)
 ```
 
 Then, start a new terminal. Done!
@@ -147,6 +147,23 @@ This requires `brew install cmatrix`.
 
 
 ### [icecube.plugin.zsh](oh-my-zsh-customization/plugins/icecube/icecube.plugin.zsh)
+
+
+
+### [install.plugin.zsh](oh-my-zsh-customization/plugins/install/install.plugin.zsh)
+
+This plugin provides shortcuts for installing software
+using homebrew cask.
+
+    search vlc
+    install vlc
+    uninstall vlc
+
+Or, in German (for parents :-) )
+
+    suche skype
+    installiere skype
+    deinstalliere skype
 
 
 
