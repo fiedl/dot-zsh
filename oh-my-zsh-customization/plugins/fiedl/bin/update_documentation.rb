@@ -69,7 +69,7 @@ class Documentation
   end
 
   def plugin_files
-    Dir.glob("#{plugin_path}/**/*.zsh").uniq
+    Dir.glob("#{plugin_path}/**/*.zsh").uniq.sort
   end
 
 end
