@@ -100,6 +100,7 @@ But it may be run manually, e.g. before committing manually.
 To edit the plugin "welcome", just type:
 
     zsh-plugin welcome
+    plugin welcome
 
 
 #### Code grepping

@@ -55,11 +55,13 @@ zsh-update-documentation() {
 # To edit the plugin "welcome", just type:
 #
 #     zsh-plugin welcome
+#     plugin welcome
 #
 zsh-plugin() {
   take "$ZSH_CUSTOM/plugins/$1"
   e "$ZSH_CUSTOM/plugins/$1/$1.plugin.zsh"
 }
+alias plugin='zsh-plugin'
 
 
 # ## Code grepping
