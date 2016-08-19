@@ -12,6 +12,7 @@
 #     cdo  # your_platform_ops
 #     cdp  # platforms_ops
 #     cdm  # your_platform/demo_app/my_platform
+#     cdv  # vademecum app
 
 if [ -d $HOME/rails ]
 then
@@ -19,7 +20,8 @@ then
   alias cdy="cd $HOME/rails/your_platform"
   alias cdo="cd $HOME/rails/your_platform_ops"
   alias cdp="cd $HOME/rails/platforms_ops"
-  alias cdm='cd $HOME/rails/your_platform/demo_app/my_platform'
+  alias cdm="cd $HOME/rails/your_platform/demo_app/my_platform"
+  alias cdv="cd $HOME/code/Vademecum.turbolinks-ios/Vademecum"
 fi
 
 if [ -d /var/wingolfsplattform ]

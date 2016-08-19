@@ -150,6 +150,7 @@ On the development machine, the projects are expected to be in
     cdo  # your_platform_ops
     cdp  # platforms_ops
     cdm  # your_platform/demo_app/my_platform
+    cdv  # vademecum app
 
 #### Rails console
 
