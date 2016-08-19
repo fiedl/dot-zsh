@@ -23,3 +23,19 @@ then
   # iruby
   alias iruby-notebook=' iruby notebook --pylab=inline'
 fi
+
+
+# On the icecube machine in zeuthen, there's I3_PORTS installed.
+# Make some shortcuts:
+#
+#     ice-port
+#     ice-cmake
+#     clsim-make
+#     icesim      # runs the env-shell
+#
+if [[ -z "$I3_PORTS" ]]; then
+  alias ice-port="$I3_PORTS/bin/port"
+  alias ice-cmake="$I3_PORTS/bin/cmake ../src"
+  alias clsim-make="cd $SIM && make -j 4 && cd -"
+  alias icesim="$SIM/env-shell.sh"
+fi

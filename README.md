@@ -149,6 +149,14 @@ This requires `brew install cmatrix`.
 
 ### [icecube.plugin.zsh](oh-my-zsh-customization/plugins/icecube/icecube.plugin.zsh)
 
+On the icecube machine in zeuthen, there's I3_PORTS installed.
+Make some shortcuts:
+
+    ice-port
+    ice-cmake
+    clsim-make
+    icesim      # runs the env-shell
+
 
 
 ### [install.plugin.zsh](oh-my-zsh-customization/plugins/install/install.plugin.zsh)
