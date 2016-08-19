@@ -20,7 +20,7 @@ else
 fi
 
 printf "${BLUE}\n🚀 Updating homebrew ... \n${NORMAL}"
-[[ -f `which brew` ]] && brew update
+[[ -f /usr/local/bin/brew ]] && brew update
 
 printf "${BLUE}\n🚀 Updating https://github.com/robbyrussell/oh-my-zsh ... \n${NORMAL}"
 
@@ -57,4 +57,6 @@ else
   git status
 fi
 
+printf "${BLUE}\n🚀 Running hook 'zsh_update' for the plugins ... ${NORMAL}\n"
+hooks-run-hook zsh_update
 

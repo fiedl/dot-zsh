@@ -15,55 +15,6 @@
 [[ -f `which mate` ]] && alias e='mate'
 
 
-# ## Updating the zsh configuration
-#
-# These commands help to sync the zsh configuration up and down.
-# Through the oh-my-zsh auto update process, the repo is down-synced
-# automatically. This is prevented by uncommited changes in ~/.zsh.
-#
-# Quickly commit and push local changes:
-#
-#     zsh-push
-#
-# If needed, with commit message:
-#
-#     zsh-push -m "I added cool stuff ..."
-#
-# Get latest changes by running one of these:
-#
-#     zsh-pull
-#     zsh-update
-#
-zsh-push() {
-  cd ~/.zsh
-  zsh-update-documentation
-  git add .
-  git commit $* --all --message="Updating zsh configuration at $(date)."
-  git push origin master
-}
-zsh-pull() { zsh-update } # which is defined as core patch
-
-# `zsh-push` will update the documentation in the README automatically.
-# But it may be run manually, e.g. before committing manually.
-#
-#     zsh-update-documentation
-#
-zsh-update-documentation() {
-  ruby $ZSH_CUSTOM/plugins/fiedl/bin/update_documentation.rb
-}
-
-# To edit the plugin "welcome", just type:
-#
-#     zsh-plugin welcome
-#     plugin welcome
-#
-zsh-plugin() {
-  take "$ZSH_CUSTOM/plugins/$1"
-  e "$ZSH_CUSTOM/plugins/$1/$1.plugin.zsh"
-}
-alias plugin='zsh-plugin'
-
-
 # ## Code grepping
 #
 # These helpers are useful to find definitions in code or quickly grep for

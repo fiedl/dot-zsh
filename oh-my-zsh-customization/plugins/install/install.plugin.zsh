@@ -18,3 +18,9 @@ alias uninstall='brew cask uninstall'
 alias suche='search'
 alias installiere='install'
 alias deinstalliere='uninstall'
+
+install_plugin_update() {
+  echo "updating the install plugin"
+  [[ -f /usr/local/bin/brew ]] && brew tap caskroom/cask
+}
+hooks-add-hook zsh_update install_plugin_update

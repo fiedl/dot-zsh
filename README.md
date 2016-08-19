@@ -37,14 +37,14 @@ fi
 
 # Auto-updating ~/.oh-my-zsh as well as ~/.zsh
 # requires to use another upgrade script.
-# Therefore, deactivate the oh-my-zsh-only one:
+# Therefore, deactivate the oh-my-zsh-only one.
+# The rest is done by the `auto-update` plugin.
 export DISABLE_AUTO_UPDATE="true"
 export DISABLE_UPDATE_PROMPT="false"
 export UPDATE_ZSH_DAYS=1
-source $HOME/.zsh/tools/check_for_update.zsh
 
 # choose oh-my-zsh plugins
-plugins=(git bundler fiedl install icecube plattform welcome)
+plugins=(git bundler auto-update fiedl install icecube plattform welcome)
 ```
 
 Then, start a new terminal. Done!
@@ -57,20 +57,7 @@ Then, start a new terminal. Done!
 
 ## Documentation
 
-### [fiedl.plugin.zsh](oh-my-zsh-customization/plugins/fiedl/fiedl.plugin.zsh)
-
-
-#### Editors
-
-Quickly start a text editor:
-
-    e
-    e .
-    e ~/.zshrc
-
-If textmate (`mate`) is installed, it will be used as editor.
-Otherwise, `emacs -nw` (in the terminal, not as window).
-Otherwise, `vim`.
+### [auto-update.plugin.zsh](oh-my-zsh-customization/plugins/auto-update/auto-update.plugin.zsh)
 
 
 #### Updating the zsh configuration
@@ -101,6 +88,50 @@ To edit the plugin "welcome", just type:
 
     zsh-plugin welcome
     plugin welcome
+
+
+#### Automated updates
+
+This script hooks into the update process of oh-my-zsh
+and also updates ~/.zsh as well as some other things
+like homebrew.
+
+To update manually, run:
+
+    zsh-update
+
+
+#### Update hooks
+
+This plugin makes use of [zsh-hooks](https://github.com/willghatch/zsh-hooks)
+to allow other plugins to hook into the update process.
+
+When writing a plugin, hook the functions to execute when
+updating into the process, like this:
+
+    foo_plugin_update() {
+      # stuff executed by this plugin when
+      # the update process is run.
+    }
+
+    hooks-add-hook zsh_update foo_plugin_update
+
+
+
+### [fiedl.plugin.zsh](oh-my-zsh-customization/plugins/fiedl/fiedl.plugin.zsh)
+
+
+#### Editors
+
+Quickly start a text editor:
+
+    e
+    e .
+    e ~/.zshrc
+
+If textmate (`mate`) is installed, it will be used as editor.
+Otherwise, `emacs -nw` (in the terminal, not as window).
+Otherwise, `vim`.
 
 
 #### Code grepping
