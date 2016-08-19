@@ -23,12 +23,21 @@ printf "${BLUE}\n🚀 Updating homebrew ... \n${NORMAL}"
 [[ -f `which brew` ]] && brew update
 
 printf "${BLUE}\n🚀 Updating https://github.com/robbyrussell/oh-my-zsh ... \n${NORMAL}"
-cd "$ZSH"
-if git pull --rebase --stat origin master
+
+echo $ZSH
+echo $OH_MY_ZSH_PATH
+
+if [[ ! -z $OH_MY_ZSH_PATH ]]
 then
-  printf "${GREEN}done.${NORMAL}\n"
+  cd "$OH_MY_ZSH_PATH"
+  if git pull --rebase --stat origin master
+  then
+    printf "${GREEN}done.${NORMAL}\n"
+  else
+    printf "${RED}FAILED.${NORMAL}\n"
+  fi
 else
-  printf "${RED}FAILED.${NORMAL}\n"
+  printf "${RED}FAILED. no OH_MY_ZSH_PATH given. ${NORMAL}\n"
 fi
 
 printf "${BLUE}\n🚀 Updating https://github.com/fiedl/dot-zsh ... ${NORMAL}"

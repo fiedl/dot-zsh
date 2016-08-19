@@ -20,25 +20,28 @@ Thus, add manually to your `~/.zshrc` what you'd like:
 # Use https://github.com/fiedl/dot-zsh as override
 # for oh-my-zsh:
 ZSH_CUSTOM="$HOME/.zsh/oh-my-zsh-customization"
+ZSH="$HOME/.oh-my-zsh"
 
 # Shell theme:
 ZSH_THEME="fiedl"
 
-# Activate auto update. This will fetch oh-my-zsh as
-# well as updates from https://github.com/fiedl/dot-zsh.
-export UPDATE_ZSH_DAYS=1
-
 # Auto-install ~/.oh-my-zsh if missing.
-if [ ! -d $ZSH ]
-then
+if [ ! -d $ZSH ]; then
   curl -L http://install.ohmyz.sh | sh
 fi
 
 # Auto-install ~/.zsh if missing.
-if [ ! -d ~/.zsh ]
-then
+if [ ! -d ~/.zsh ]; then
   git clone git@github.com:fiedl/dot-zsh.git ~/.zsh
 fi
+
+# Auto-updating ~/.oh-my-zsh as well as ~/.zsh
+# requires to use another upgrade script.
+# Therefore, deactivate the oh-my-zsh-only one:
+export DISABLE_AUTO_UPDATE="true"
+export DISABLE_UPDATE_PROMPT="false"
+export UPDATE_ZSH_DAYS=1
+source $HOME/.zsh/tools/check_for_update.zsh
 
 # choose oh-my-zsh plugins
 plugins=(git bundler fiedl icecube plattform welcome)
