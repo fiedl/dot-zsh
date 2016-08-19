@@ -20,7 +20,7 @@
 zsh-push() {
   cd ~/.zsh
   zsh-update-documentation
-  git commit --all --message="Updating zsh configuration at $(date)." $1
+  git commit $* --all --message="Updating zsh configuration at $(date)."
   git push origin master
 }
 zsh-pull() { zsh-update } # which is defined as core patch
