@@ -1,3 +1,20 @@
+# ## Editors
+#
+# Quickly start a text editor:
+#
+#     e
+#     e .
+#     e ~/.zshrc
+#
+# If textmate (`mate`) is installed, it will be used as editor.
+# Otherwise, `emacs -nw` (in the terminal, not as window).
+# Otherwise, `vim`.
+#
+[[ -f `which vim` ]] && alias e='vim'
+[[ -f `which emacs` ]] && alias e='emacs -nw'
+[[ -f `which mate` ]] && alias e='mate'
+
+
 # ## Updating the zsh configuration
 #
 # These commands help to sync the zsh configuration up and down.
@@ -32,6 +49,17 @@ zsh-pull() { zsh-update } # which is defined as core patch
 #
 zsh-update-documentation() {
   ruby $ZSH_CUSTOM/plugins/fiedl/bin/update_documentation.rb
+}
+
+# To edit the plugin "welcome", just type:
+#
+#     zsh-plugin welcome
+#
+zsh-plugin() {
+  if [ ! -d "$ZSH_CUSTOM/plugins/$1" ]; then
+    take "$ZSH_CUSTOM/plugins/$1"
+  fi
+  e "$ZSH_CUSTOM/plugins/$1/$1.plugin.zsh"
 }
 
 

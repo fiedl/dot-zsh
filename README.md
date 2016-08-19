@@ -60,6 +60,19 @@ Then, start a new terminal. Done!
 ### [fiedl.plugin.zsh](oh-my-zsh-customization/plugins/fiedl/fiedl.plugin.zsh)
 
 
+#### Editors
+
+Quickly start a text editor:
+
+    e
+    e .
+    e ~/.zshrc
+
+If textmate (`mate`) is installed, it will be used as editor.
+Otherwise, `emacs -nw` (in the terminal, not as window).
+Otherwise, `vim`.
+
+
 #### Updating the zsh configuration
 
 These commands help to sync the zsh configuration up and down.
@@ -83,6 +96,10 @@ Get latest changes by running one of these:
 But it may be run manually, e.g. before committing manually.
 
     zsh-update-documentation
+
+To edit the plugin "welcome", just type:
+
+    zsh-plugin welcome
 
 
 #### Code grepping
