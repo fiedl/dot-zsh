@@ -22,7 +22,9 @@ screenfetch_command() {
 }
 
 screenfetch_logo() {
-  if [ `hostname` = 'fiedl-mbp' ]; then
+  if [[ $USER = 'ani' ]]; then
+    echo "-a $ZSH_CUSTOM/plugins/welcome/flower.zsh"
+  elif [ `hostname` = 'fiedl-mbp' ]; then
     echo "-a $ZSH_CUSTOM/plugins/welcome/starfleet-logo.zsh"
   elif [ `hostname` = 'fiedl-mbp-2009' ]; then
     echo "-a $ZSH_CUSTOM/plugins/welcome/starfleet-logo.zsh"
