@@ -37,6 +37,7 @@
 zsh-push() {
   cd ~/.zsh
   zsh-update-documentation
+  git add .
   git commit $* --all --message="Updating zsh configuration at $(date)."
   git push origin master
 }
