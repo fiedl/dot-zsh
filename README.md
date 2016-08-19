@@ -70,10 +70,20 @@ Quickly commit and push local changes:
 
     zsh-push
 
+If needed, with commit message:
+
+    zsh-push -m "I added cool stuff ..."
+
 Get latest changes by running one of these:
 
     zsh-pull
     zsh-update
+
+`zsh-push` will update the documentation in the README automatically.
+But it may be run manually, e.g. before committing manually.
+
+    zsh-update-documentation
+
 
 #### Code grepping
 

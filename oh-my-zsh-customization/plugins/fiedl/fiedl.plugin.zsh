@@ -8,19 +8,28 @@
 #
 #     zsh-push
 #
+# If needed, with commit message:
+#
+#     zsh-push -m "I added cool stuff ..."
+#
 # Get latest changes by running one of these:
 #
 #     zsh-pull
 #     zsh-update
-
+#
 zsh-push() {
   cd ~/.zsh
   zsh-update-documentation
-  git commit --all --message="Updating zsh configuration at $(date)."
+  git commit --all --message="Updating zsh configuration at $(date)." $1
   git push origin master
 }
-zsh-pull() { upgrade_oh_my_zsh } # which also updates ~/.zsh
-zsh-update() { zsh-pull }
+zsh-pull() { zsh-update } # which is defined as core patch
+
+# `zsh-push` will update the documentation in the README automatically.
+# But it may be run manually, e.g. before committing manually.
+#
+#     zsh-update-documentation
+#
 zsh-update-documentation() {
   ruby $ZSH_CUSTOM/plugins/fiedl/bin/update_documentation.rb
 }
