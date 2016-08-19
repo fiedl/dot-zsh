@@ -116,6 +116,14 @@ updating into the process, like this:
 
     hooks-add-hook zsh_update foo_plugin_update
 
+Or, short:
+
+    hook zsh_update foo_plugin_update
+
+Or, shorter:
+
+    on_update foo_plugin_update
+
 
 
 ### [editor.plugin.zsh](oh-my-zsh-customization/plugins/editor/editor.plugin.zsh)

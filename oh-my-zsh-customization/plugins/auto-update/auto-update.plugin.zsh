@@ -79,6 +79,16 @@ source $HOME/.zsh/tools/check_for_update.zsh
 #
 #     hooks-add-hook zsh_update foo_plugin_update
 #
+# Or, short:
+#
+#     hook zsh_update foo_plugin_update
+#
+# Or, shorter:
+#
+#     on_update foo_plugin_update
+#
 source "$ZSH_CUSTOM/plugins/auto-update/zsh-hooks.zsh"
 hooks-define-hook zsh_update
+alias hook='hook-add-hook'
+alias on_update='hook zsh_update'
 
