@@ -10,7 +10,7 @@
 #
 # If needed, with commit message:
 #
-#     zsh-push -m "I added cool stuff ..."
+#     zsh-push I added cool stuff ...
 #
 # Get latest changes by running one of these:
 #
@@ -21,7 +21,7 @@ zsh-push() {
   cd ~/.zsh
   zsh-update-documentation
   git add .
-  git commit $* --all --message="Updating zsh configuration at $(date)."
+  git commit --message "$*" --all --message="Updating zsh configuration at $(date)."
   git push origin master
 }
 zsh-pull() { zsh-update }

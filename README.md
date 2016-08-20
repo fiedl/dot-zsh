@@ -72,7 +72,7 @@ Quickly commit and push local changes:
 
 If needed, with commit message:
 
-    zsh-push -m "I added cool stuff ..."
+    zsh-push I added cool stuff ...
 
 Get latest changes by running one of these:
 
