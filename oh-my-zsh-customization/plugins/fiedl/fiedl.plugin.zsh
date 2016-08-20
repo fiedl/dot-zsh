@@ -3,6 +3,11 @@
 # Aliases also work with sudo.
 # This trick is from https://wiki.archlinux.org/index.php/Sudo#Passing_aliases.
 #
+# Why? From the alias section in the bash manpage (http://serverfault.com/a/178956/167331):
+#
+# > A trailing space in value causes the next word to be checked
+# > for alias substitution when the alias is expanded.
+#
 alias sudo='sudo '
 
 # ## Code grepping
