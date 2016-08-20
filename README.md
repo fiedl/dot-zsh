@@ -187,6 +187,36 @@ This requires `brew install cmatrix`.
     ka vlc
 
 
+### [highlight.plugin.zsh](oh-my-zsh-customization/plugins/highlight/highlight.plugin.zsh)
+
+
+#### Selective history
+
+To select a command from the history to repeat, type the beginning
+and press the up key.
+
+    ssh<up>
+    # =>  ssh mccoy
+
+See also: https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys
+
+
+#### Command highlighting
+
+When you type, the zsh checks whether the command in known. If so,
+it's highlighted.
+
+I've taken this from
+https://github.com/zsh-users/zsh-syntax-highlighting
+and got the idea from
+https://github.com/idk/moo-skel.
+
+
+
+### [zsh-syntax-highlighting.plugin.zsh](plugins/highlight/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh)
+
+
+
 ### [icecube.plugin.zsh](oh-my-zsh-customization/plugins/icecube/icecube.plugin.zsh)
 
 On the icecube machine in zeuthen, there's I3_PORTS installed.
