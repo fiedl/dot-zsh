@@ -143,6 +143,12 @@ Otherwise, `vim`.
 ### [fiedl.plugin.zsh](oh-my-zsh-customization/plugins/fiedl/fiedl.plugin.zsh)
 
 
+#### Passing sudo
+
+Aliases also work with sudo.
+This trick is from https://wiki.archlinux.org/index.php/Sudo#Passing_aliases.
+
+
 #### Code grepping
 
 These helpers are useful to find definitions in code or quickly grep for

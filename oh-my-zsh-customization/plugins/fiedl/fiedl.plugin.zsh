@@ -1,3 +1,10 @@
+# ## Passing sudo
+#
+# Aliases also work with sudo.
+# This trick is from https://wiki.archlinux.org/index.php/Sudo#Passing_aliases.
+#
+alias sudo='sudo '
+
 # ## Code grepping
 #
 # These helpers are useful to find definitions in code or quickly grep for
