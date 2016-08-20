@@ -272,6 +272,12 @@ Or, in German (for parents :-) )
 
 Using karabiner I have remapped my keyboard.
 
+    p ü + ö ä # < -   (layout: de)
+    ----------------------------------
+    \ { }   [ ] |     Alt_L
+    \ { }   [ ] | ~   Cmd_R
+      [ ]             Alt_L + Shift_L
+
 Karabiner provides a command-line interface to activate
 or deactivate settings:
 
@@ -290,7 +296,9 @@ But be aware, they always refer to the us keyboard layout.
     create-key-map "slash shift" backslash
 
 The new mapping is appended to
-~/Library/Application Support/Karabiner/private.xml
+~/Library/Application Support/Karabiner/private.xml.
+
+Manual: https://pqrs.org/osx/karabiner/xml.html.en
 
 To edit this file, just type:
 

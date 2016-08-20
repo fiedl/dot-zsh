@@ -3,10 +3,13 @@
 require 'active_support/inflector'
 
 def convert_keycode_string(str)
+  # Syntax: https://pqrs.org/osx/karabiner/xml.html.en
   str = str.gsub " shift", ", ModifierFlag::SHIFT_L"
+  str = str.gsub " alt", ", ModifierFlag::OPTION_L"
   str = str.upcase
   str = "KeyCode::#{str}"
   str = str.gsub "MODIFIERFLAG::", "ModifierFlag::"
+  str = str.gsub "_L, ModifierFlag::", "_L | ModifierFlag::"
   return str
 end
 
@@ -15,6 +18,8 @@ simulated_key = convert_keycode_string ARGV[1]
 
 mapping_name = "Change #{physical_key} to #{simulated_key}"
 mapping_identifier = "private.#{mapping_name.parameterize}"
+mapping_identifier.gsub! "keycode-", ""
+mapping_identifier.gsub! "modifierflag-", ""
 
 private_xml_path = File.expand_path "#{ENV['HOME']}/Library/Application Support/Karabiner/private.xml"
 
