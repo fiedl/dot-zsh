@@ -20,25 +20,27 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 # ## Home and end keys
 #
 # This makes them also work in the terminal.
+# I've taken this from http://zshwiki.org/home/zle/bindkeys.
 #
-# key[Home]=${terminfo[khome]}
-# key[End]=${terminfo[kend]}
-# key[Insert]=${terminfo[kich1]}
-# key[Delete]=${terminfo[kdch1]}
-# key[Up]=${terminfo[kcuu1]}
-# key[Down]=${terminfo[kcud1]}
-# key[Left]=${terminfo[kcub1]}
-# key[Right]=${terminfo[kcuf1]}
-# key[PageUp]=${terminfo[kpp]}
-# key[PageDown]=${terminfo[knp]}
-# [[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
-# [[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
-# [[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
-# [[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
-# [[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-beginning-search
-# [[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-beginning-search
-# [[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
-# [[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
+bindkey "^[[H"  beginning-of-line                # ${terminfo[khome]}   key_Home
+bindkey "^[[F"  end-of-line                      # ${terminfo[kend]}    key_End
+bindkey "^[[A"  up-line-or-beginning-search      # ${terminfo[kcuu1]}   key_Up
+bindkey "^[[B"  down-line-or-beginning-search    # ${terminfo[kcud1]}   key_Down
+bindkey "^[[D"  backward-char                    # ${terminfo[kcub1]}   key_Left
+bindkey "^[[C"  forward-char                     # ${terminfo[kcuf1]}   key_Right
+
+if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+  # Finally, make sure the terminal is in application mode, when zle is
+  # active. Only then are the values from $terminfo valid.
+  function zle-line-init () {
+    echoti smkx
+  }
+  function zle-line-finish () {
+    echoti rmkx
+  }
+  zle -N zle-line-init
+  zle -N zle-line-finish
+fi
 
 # ## Command highlighting
 #
