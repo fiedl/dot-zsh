@@ -268,6 +268,35 @@ Or, in German (for parents :-) )
 ### [keyboard.plugin.zsh](oh-my-zsh-customization/plugins/keyboard/keyboard.plugin.zsh)
 
 
+#### Remap keys (macOS)
+
+Using karabiner I have remapped my keyboard.
+
+Karabiner provides a command-line interface to activate
+or deactivate settings:
+
+    karabiner set karabiner set remap.optionR2forwarddelete 1
+    karabiner set karabiner set remap.optionR2forwarddelete 0
+
+Also, this script provides a short comamnd to create and apply
+new key remappings.
+
+They keycodes can be looked up here:
+https://github.com/tekezo/Karabiner/blob/master/src/bridge/generator/keycode/data/KeyCode.data
+
+But be aware, they always refer to the us keyboard layout.
+
+    create-key-map slash backslash
+    create-key-map "slash shift" backslash
+
+The new mapping is appended to
+~/Library/Application Support/Karabiner/private.xml
+
+To edit this file, just type:
+
+    key-maps
+
+
 
 ### [moo.plugin.zsh](oh-my-zsh-customization/plugins/moo/moo.plugin.zsh)
 
