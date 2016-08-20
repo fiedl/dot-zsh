@@ -10,4 +10,5 @@
 #
 [[ -f `which vim` ]] && alias e='vim'
 [[ -f `which emacs` ]] && alias e='emacs -nw'
+[[ -f /usr/bin/atom ]] && alias e='atom'
 [[ -f `which mate` ]] && alias e='mate'
