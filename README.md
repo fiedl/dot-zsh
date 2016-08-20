@@ -213,10 +213,6 @@ https://github.com/idk/moo-skel.
 
 
 
-### [zsh-syntax-highlighting.plugin.zsh](plugins/highlight/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh)
-
-
-
 ### [icecube.plugin.zsh](oh-my-zsh-customization/plugins/icecube/icecube.plugin.zsh)
 
 On the icecube machine in zeuthen, there's I3_PORTS installed.
