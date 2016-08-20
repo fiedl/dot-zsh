@@ -44,7 +44,7 @@ export DISABLE_UPDATE_PROMPT="false"
 export UPDATE_ZSH_DAYS=1
 
 # choose oh-my-zsh plugins
-plugins=(git bundler editor auto-update fiedl install icecube plattform welcome)
+plugins=(git bundler editor auto-update highlight fiedl icecube install plattform keyboard welcome)
 ```
 
 Then, start a new terminal. Done!
