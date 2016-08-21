@@ -45,6 +45,7 @@ export UPDATE_ZSH_DAYS=1
 
 # choose oh-my-zsh plugins
 plugins=(git bundler editor auto-update highlight fiedl icecube install plattform keyboard welcome)
+source $ZSH/oh-my-zsh.sh
 ```
 
 Then, start a new terminal. Done!
@@ -54,6 +55,27 @@ Then, start a new terminal. Done!
 * When starting a terminal, oh-my-zsh will ask you to perform an upgrade, regularly. This will also update `~/.zsh`.
 * Or, run: `zsh-update`.
 * Or, pull changes manually: `cd $HOME/.zsh; git pull`
+
+## Install on fresh systems
+
+```bash
+# basic packages (arch linux only)
+sudo pacman -S zsh emacs-nox htop ruby
+
+# Install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# Clone repo
+git clone https://github.com/fiedl/dot-zsh ~/.zsh
+
+# MANUALLY: copy required content from above into ~/.zshrc
+
+# Start a new shell
+zsh
+
+# Start an auto-update
+zsh-update
+```
 
 ## Documentation
 
