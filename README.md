@@ -219,6 +219,14 @@ This requires `brew install cmatrix`.
 
     ka vlc
 
+#### Shortcut for controlling services through homebrew.
+
+    service restart elasticsearch
+
+Will be the same as:
+
+    brew services restart elasticsearch
+
 
 ### [highlight.plugin.zsh](oh-my-zsh-customization/plugins/highlight/highlight.plugin.zsh)
 
@@ -261,6 +269,21 @@ Make some shortcuts:
     ice-cmake
     clsim-make
     icesim      # runs the env-shell
+
+### Jupyter bash kernel
+
+A great way to document console output is to run a bash kernel
+inside a jupyter session in the browser. That way, the input
+as well as the output is documented and can be extended with
+text blocks, headings et cetera.
+
+https://github.com/takluyver/bash_kernel
+
+Install with: `pip install [--upgrade] jupyter bash_kernel`
+
+Short commands:
+
+* `nb`: Start a new bash kernel notebook in the log directory. Next, click "New", "Bash".
 
 
 
