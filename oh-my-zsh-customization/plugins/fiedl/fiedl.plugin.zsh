@@ -74,3 +74,13 @@ alias matrix='cmatrix -C magenta'
 
 alias ka='pkill -f'
 
+
+# ## Shortcut for controlling services through homebrew.
+#
+#     service restart elasticsearch
+#
+# Will be the same as:
+#
+#     brew services restart elasticsearch
+
+alias service='brew services'
