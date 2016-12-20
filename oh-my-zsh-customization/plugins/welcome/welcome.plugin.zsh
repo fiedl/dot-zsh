@@ -24,6 +24,8 @@ screenfetch_command() {
 screenfetch_logo() {
   if [[ $USER = 'ani' ]]; then
     echo "-a $ZSH_CUSTOM/plugins/welcome/flower.zsh"
+  elif [ `hostname` = 'fiedl-mbp.local' ]; then
+    echo "-a $ZSH_CUSTOM/plugins/welcome/starfleet-logo.zsh"
   elif [ `hostname` = 'fiedl-mbp' ]; then
     echo "-a $ZSH_CUSTOM/plugins/welcome/starfleet-logo.zsh"
   elif [ `hostname` = 'fiedl-mbp-2009' ]; then
