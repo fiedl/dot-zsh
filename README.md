@@ -194,6 +194,21 @@ Quickly find a file within the current directory.
 This uses friendly find (ffind), which needs to be installed.
 Mac: `brew install ffind`.
 
+#### Finding files on the NAS
+
+Find files on the NAS by:
+
+    nas-find Keith Jarrett
+    nf Keith Jarrett
+
+My NAS has a cron job to create a file index at `/share/Sebastian/.find.txt`.
+In the work machine's file system, this is `/Volumes/Sebastian/.find.txt`.
+The above commands just grep in that file.
+
+    # crontab -e
+    0 2 * * * cd /share/Sebastian; /usr/bin/find ./ |sed -e 's/\.\//\/Volumes\/Sebastian\//g' > .find.tmp; /bin/rm .find.txt; /bin/mv .find.tmp .find.txt
+
+
 #### Moving files
 
 Move multiple files with wildcards using multimove.
