@@ -243,6 +243,18 @@ Will be the same as:
     brew services restart elasticsearch
 
 
+### [gnuplot.plugin.zsh](oh-my-zsh-customization/plugins/gnuplot/gnuplot.plugin.zsh)
+
+Use gnuplot to plot something and display it right inside the terminal
+using `imgcat`.
+
+Examples:
+
+    plot "sin(x)"
+    cat data.txt |plot
+
+
+
 ### [highlight.plugin.zsh](oh-my-zsh-customization/plugins/highlight/highlight.plugin.zsh)
 
 
