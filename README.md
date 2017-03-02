@@ -455,6 +455,10 @@ Run specs with selenium rather than phantomjs.
     selenium spec/features
     selen spec/features
 
+Run parallel tests
+
+    para spec/models
+
 
 
 ### [welcome.plugin.zsh](oh-my-zsh-customization/plugins/welcome/welcome.plugin.zsh)

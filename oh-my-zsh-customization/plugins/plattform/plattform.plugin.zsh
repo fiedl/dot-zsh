@@ -125,3 +125,9 @@ rspec() { tab_orange; lcars; bin/rspec "$@"; lcars; tab-reset; }
 alias selenium='SELENIUM=true rspec'
 alias selen='selenium'
 
+# Run parallel tests
+#
+#     para spec/models
+#
+para() { tab_orange; lcars; parallel_rspec "$@"; lcars; tab-reset; }
+
