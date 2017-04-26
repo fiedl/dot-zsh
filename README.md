@@ -386,6 +386,12 @@ They can be symlinked or hardlinked into existing projects:
     ln -s ~/.zsh/oh-my-zsh-customization/plugins/latex/lib lib
     hln ~/.zsh/oh-my-zsh-customization/plugins/latex/lib lib
 
+Or, with this extension, short:
+
+    cd /path/to/my/latex/project
+    latex-link-lib
+    latex-unlink-lib
+
 When hardlinked, the lib directory is included in git's source control.
 
 The `hln` command is defined in https://github.com/selkhateeb/hardlink
@@ -396,6 +402,7 @@ Then the shread libraries can be included into the tex document:
     % /path/to/my/latex/project/main.tex
     % ...
     % \input{lib/todo}
+
 
 
 ### [moo.plugin.zsh](oh-my-zsh-customization/plugins/moo/moo.plugin.zsh)
