@@ -1,0 +1,12 @@
+% Markierungen mit `\todo{foo}`, `\mref{schiller}`, `\frage{foo}` einfügen.
+
+\usepackage{color}
+
+% Markierung einfügen (Kommentar während der Bearbeitung) % Parameter: Art, Kommentar
+\newcommand{\markierung}[2]{
+        \textcolor{red}{\textbf{#1:} #2} \\
+}
+
+\newcommand{\todo}[1]{\markierung{Zu erledigen}{#1}} % ToDo-Kommentar einfügen, Parameter: Kommentar
+\newcommand{\mref}[1]{\markierung{Verweis einfügen}{#1}} % Fehlenden Verweis markieren, Parameter: Kommentar
+\newcommand\frage[1]{\markierung{Frage}{#1}} % Frage
