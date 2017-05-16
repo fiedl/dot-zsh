@@ -60,7 +60,7 @@ $(PROJECT).pdf: build/$(PROJECT).pdf
 
 build/$(PROJECT).pdf : $(PROJECT).tex FORCE_MAKE dependencies
 	$(PDFLATEX) $(PROJECT)
-	rm $(CONVERTED_MARKDOWN_FILES)
+	-rm $(CONVERTED_MARKDOWN_FILES)
 
 clean:
 	# The minus sign in front of `rm` prevents this clean task

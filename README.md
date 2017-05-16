@@ -395,7 +395,7 @@ Or, with this extension, short:
 When hardlinked, the lib directory is included in git's source control.
 
 The `hln` command is defined in https://github.com/selkhateeb/hardlink
-and can be installed on mac os using `brew install hln`.
+and can be installed on mac os using `brew install hardlink-osx`.
 
 Then the shread libraries can be included into the tex document:
 
