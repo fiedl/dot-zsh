@@ -1,3 +1,13 @@
 \usepackage{graphicx}
 
 \newcommand\image[1]{\includegraphics[width=\textwidth]{img/#1}}
+
+\newcommand\fig[2]{
+  \begin{figure}
+    \begin{margincap}
+      \centering
+      \image{#1}
+      \caption{#2}
+    \end{margincap}
+  \end{figure}
+}

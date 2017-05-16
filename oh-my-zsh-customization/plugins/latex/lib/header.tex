@@ -1,0 +1,40 @@
+% This file is responsible for the page header.
+
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+% This provides \currentsection, \currentsubsection and \currentsubsubsection.
+% See: lib/section.tex
+%
+\preparesectionmarks
+
+\fancyhead[L,EL]{%
+  \footnotesize
+  \minipage{10cm}%
+    \textsf{%
+      \textbf{{\dokumententitel}},
+			\dokumentid,
+			\ifthenelse{\equal{\entwurf}{}}{
+				\datum
+			}{
+				\textcolor{red}\entwurf\normalcolor
+			} \\
+			\currentsection\ifthenelse{\equal{\currentsubsection}{}}{}{: \currentsubsection}
+		}
+  \endminipage
+}
+
+\fancyhead[C]{}
+
+\fancyhead[OR]{\logo}
+
+\renewcommand{\headrulewidth}{0.0pt} %obere Trennlinie
+\addtolength{\headheight}{2\baselineskip} % noch etwas Platz
+
+\fancyfoot[OL]{}
+\fancyfoot[C]{}
+\fancyfoot[OR,EL]{\vspace{2cm}\fancyfootfont{ Seite \thepage}}
+
+\renewcommand{\footrulewidth}{0.0pt} %untere Trennlinie

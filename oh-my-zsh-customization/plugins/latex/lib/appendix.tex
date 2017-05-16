@@ -1,0 +1,21 @@
+% Appendix
+
+\newcommand\Anhang{
+	\clearpage
+	\vspace*{0.1\textwidth}
+	\appendix
+	\section{Anhang}
+	\renewcommand\currentsubsection{}
+	\secttoc
+}
+
+\newcommand\anhangsection[1]{
+	\clearpage
+	\vspace*{0.4\textwidth}
+	\hrule\vspace{0.7cm}
+	\begin{huge}Anhang\end{huge}
+	\subsection{#1}
+	\renewcommand\currentsection{Anhang: #1}
+	\hrule
+	\vspace*{2cm}
+}

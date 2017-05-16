@@ -1,0 +1,27 @@
+\usepackage[explicit]{titlesec}
+
+% The current section, subsection and subsubsection
+% are stored in these commands, such that they can
+% be included in the page header.
+%
+\newcommand\currentsection{}
+\newcommand\currentsubsection{}
+\newcommand\currentsubsubsection{}
+
+% \preparesectionmarks needs to be called after \pagestyle in order to
+% copy the current section titles into the header.
+% https://de.wikibooks.org/wiki/LaTeX-Wörterbuch:_chaptermark
+%
+\newcommand\preparesectionmarks{
+  \renewcommand\sectionmark[1]{\renewcommand\currentsection{##1}}
+  \renewcommand\subsectionmark[1]{\renewcommand\currentsubsection{##1}}
+  \renewcommand\subsubsectionmark[1]{\renewcommand\currentsubsubsection{##1}}
+}
+
+% http://tug.ctan.org/macros/latex/contrib/titlesec/titlesec.pdf
+% https://tex.stackexchange.com/a/59727/70789
+%
+% \titleformat{⟨command⟩}[⟨shape⟩]{⟨format⟩}{⟨label⟩}{⟨sep⟩}{⟨before-code⟩}[⟨after-code⟩]
+%\titleformat{\section}{\Large\bfseries}{\thesection\quad}{0cm}{\renewcommand{\currentsection}{#1} #1}
+%\titleformat{\subsection}{\large\bfseries}{\thesubsection\quad}{0cm}{\renewcommand{\currentsubsection}{#1}#1}
+%\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection\quad}{0cm}{\renewcommand{\currentsubsubsection}{#1}#1\emph{}}

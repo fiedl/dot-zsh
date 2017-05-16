@@ -1,0 +1,239 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.16)  27 APR 2017 20:32
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**sections.tex
+(./sections.tex
+LaTeX2e <2016/03/31>
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+
+./sections.tex:1: LaTeX Error: \usepackage before \documentclass.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.1 \usepackage[explicit]{
+                          titlesec}
+\usepackage may only appear in the document preamble, i.e.,
+between \documentclass and \begin{document}.
+
+./sections.tex:20: Undefined control sequence.
+l.20 \titleformat
+                 {\section}{\Large\bfseries}{\thesection\quad}{0cm}{\setcurr...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./sections.tex:20: Undefined control sequence.
+l.20 \titleformat{\section
+                          }{\Large\bfseries}{\thesection\quad}{0cm}{\setcurr...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./sections.tex:20: Undefined control sequence.
+l.20 \titleformat{\section}{\Large
+                                  \bfseries}{\thesection\quad}{0cm}{\setcurr...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./sections.tex:20: Undefined control sequence.
+l.20 ...mat{\section}{\Large\bfseries}{\thesection
+                                                  \quad}{0cm}{\setcurrentsec...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./sections.tex:20: LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.20 ...section}{\Large\bfseries}{\thesection\quad
+                                                  }{0cm}{\setcurrentsection{...
+
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no m in font nullfont!
+./sections.tex:20: Illegal parameter number in definition of \currentsection.
+<to be read again> 
+                   1
+l.20 ...ion\quad}{0cm}{\setcurrentsection{Blub #1}
+                                                  }
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+Missing character: There is no B in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no b in font nullfont!
+./sections.tex:20: You can't use `macro parameter character #' in horizontal mo
+de.
+<argument> Blub ##
+                  1
+l.20 ...ion\quad}{0cm}{\setcurrentsection{Blub #1}
+                                                  }
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no 1 in font nullfont!
+./sections.tex:21: Undefined control sequence.
+l.21 \titleformat
+                 {\subsection}{\large\bfseries}{\thesubsection\quad}{0cm}{\r...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./sections.tex:21: Undefined control sequence.
+l.21 \titleformat{\subsection
+                             }{\large\bfseries}{\thesubsection\quad}{0cm}{\r...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./sections.tex:21: Undefined control sequence.
+l.21 \titleformat{\subsection}{\large
+                                     \bfseries}{\thesubsection\quad}{0cm}{\r...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./sections.tex:21: Undefined control sequence.
+l.21 ...ubsection}{\large\bfseries}{\thesubsection
+                                                  \quad}{0cm}{\renewcommand{...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no m in font nullfont!
+./sections.tex:21: Illegal parameter number in definition of \currentsubsection
+.
+<to be read again> 
+                   1
+l.21 ...0cm}{\renewcommand{\currentsubsection}{#1}
+                                                  #1}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./sections.tex:21: You can't use `macro parameter character #' in horizontal mo
+de.
+l.21 ...cm}{\renewcommand{\currentsubsection}{#1}#
+                                                  1}
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no 1 in font nullfont!
+./sections.tex:22: Undefined control sequence.
+l.22 \titleformat
+                 {\subsubsection}{\normalsize\bfseries}{\thesubsubsection\qu...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+./sections.tex:22: Undefined control sequence.
+l.22 \titleformat{\subsubsection
+                                }{\normalsize\bfseries}{\thesubsubsection\qu...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+./sections.tex:22: LaTeX Error: The font size command \normalsize is not define
+d:
+               there is probably something wrong with the class file.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.22 \titleformat{\subsubsection}{\normalsize
+                                             \bfseries}{\thesubsubsection\qu...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+./sections.tex:22: Undefined control sequence.
+l.22 ...n}{\normalsize\bfseries}{\thesubsubsection
+                                                  \quad}{0cm}{\renewcommand{...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no m in font nullfont!
+./sections.tex:22: Illegal parameter number in definition of \currentsubsubsect
+ion.
+<to be read again> 
+                   1
+l.22 ...}{\renewcommand{\currentsubsubsection}{#1}
+                                                  #1}
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
+./sections.tex:22: You can't use `macro parameter character #' in horizontal mo
+de.
+l.22 ...{\renewcommand{\currentsubsubsection}{#1}#
+                                                  1}
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+Missing character: There is no 1 in font nullfont!
+)
+! Emergency stop.
+<*> sections.tex
+                
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 12 strings out of 493014
+ 224 string characters out of 6133351
+ 53601 words of memory out of 5000000
+ 3654 multiletter control sequences out of 15000+600000
+ 3948 words of font info for 15 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 12i,1n,9p,159b,55s stack positions out of 5000i,500n,10000p,200000b,80000s
+!  ==> Fatal error occurred, no output PDF file produced!
