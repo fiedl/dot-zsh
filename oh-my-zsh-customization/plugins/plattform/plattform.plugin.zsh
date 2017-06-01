@@ -131,3 +131,7 @@ alias selen='selenium'
 #
 para() { tab_orange; lcars; parallel_rspec "$@"; lcars; tab-reset; }
 
+# The node js binary path `/usr/local/nodejs-binary/bin` is added to the `PATH`
+# by this script.
+#
+export PATH="$PATH:/usr/local/nodejs-binary/bin"
