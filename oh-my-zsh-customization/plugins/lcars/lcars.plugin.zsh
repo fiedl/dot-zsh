@@ -23,8 +23,6 @@ function lcars-new() {
   clear
   # osascript -e 'tell application "System Events" to keystroke "k" using command down'
   $ZSH_CUSTOM/plugins/lcars/bin/lcars-frame head
-  echo ""
-  echo ""
   lcars-sound
 }
 
@@ -41,6 +39,7 @@ function lcars() {
   echo ""
   $*
   echo ""
+  lcars-sound
   $ZSH_CUSTOM/plugins/lcars/bin/lcars-frame end
 }
 
