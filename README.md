@@ -425,6 +425,12 @@ Wrap a command in an lcars frame.
 
     lcars echo foo
 
+◖ button ◗
+export POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='◗ ◖'
+export POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR='◗ ◖'
+export POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR='◗ ◖'
+export POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR='◗ ◖'
+export POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR='◗ ◖'
 
 
 ### [moo.plugin.zsh](oh-my-zsh-customization/plugins/moo/moo.plugin.zsh)

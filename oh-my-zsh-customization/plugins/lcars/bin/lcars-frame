@@ -10,7 +10,7 @@ require 'colored'
 #  ▇▇▇▇▇▇▇▇▇▇▇▇     
 # ▇▇▇▇▇▇▇▇▇▇▇
 # ▇▇▇▇▇▇▇▇▇▇▇
-# ▇▇▇▇▇▇▇▇▇▇▇ 
+# ▇▇▇▇▇▇▇▇▇▇▇      ◖ button ◗	  ■■ 123 ◗
 
 module Lcars
   module SystemInfo
@@ -68,11 +68,11 @@ module Lcars
           {str: placeholder, color: color},
           {str: "▇▇ ", color: color},
           {str: title.upcase, color: :yellow},
-          {str: " ▇▇▇▇▇▇▇▇▇", color: color}
+          {str: " ▇▇▇▇▇▇▇▇◗", color: color}
         ]
       else
         parts = [
-          {str: "     ▇▇▇▇▇▇▇▇▇▇▇", color: color},
+          {str: "     ▇▇▇▇▇▇▇▇▇▇◗", color: color},
           {str: placeholder, color: color}
         ]
       end

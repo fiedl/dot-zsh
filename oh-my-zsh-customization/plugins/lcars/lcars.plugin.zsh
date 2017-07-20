@@ -22,7 +22,9 @@ lcars-sound() { $ZSH_CUSTOM/plugins/lcars/bin/lcars-sound > /dev/null 2>&1 }
 function lcars-new() {
   clear
   # osascript -e 'tell application "System Events" to keystroke "k" using command down'
-  $ZSH_CUSTOM/plugins/lcars/bin/lcars-frame
+  $ZSH_CUSTOM/plugins/lcars/bin/lcars-frame head
+  echo ""
+  echo ""
   lcars-sound
 }
 
@@ -42,8 +44,19 @@ function lcars() {
   $ZSH_CUSTOM/plugins/lcars/bin/lcars-frame end
 }
 
-
 export TERM="xterm-256color"
-export POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="▇▇▇▇▇▇▇▇▇▇▇\n▇▇▇▇▇▇▇▇▇▇▇ "
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="▇▇▇▇▇▇▇▇▇▇▇ "
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+
+POWERLEVEL9K_STATUS_BACKGROUND='yellow'
+POWERLEVEL9K_TIME_BACKGROUND='magenta'
+POWERLEVEL9K_TIME_FOREGROUND='black'
+
+#POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="▇▇▇▇▇▇▇▇▇▇▇\n▇▇▇▇▇▇▇▇▇▇▇ "
+#POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="▇▇▇▇▇▇▇▇▇▇▇ "
+# ◖ button ◗
+# export POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='◗ ◖'
+# export POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR='◗ ◖'
+# export POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR='◗ ◖'
+# export POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR='◗ ◖'
+# export POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR='◗ ◖'
