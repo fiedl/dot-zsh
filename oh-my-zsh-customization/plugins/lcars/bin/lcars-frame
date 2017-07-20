@@ -13,6 +13,107 @@ require 'colored'
 # ▇▇▇▇▇▇▇▇▇▇▇      ◖ button ◗	  ■■ 123 ◗
 
 module Lcars
+  class Application
+    attr_accessor :command_line_arguments
+    
+    def initialize(command_line_args)
+      self.command_line_arguments = command_line_args
+    end
+    
+    def session
+      @session ||= Session.new(ENV['TERM_SESSION_ID'])
+    end
+    
+    def state
+      @state ||= State.new(session)
+    end
+    
+    def command
+      command_line_arguments.first
+    end
+    
+    def params
+      command_line_arguments[1..-1]
+    end
+    
+    def render(frame_class, args = {})
+      frame_class.new(self, args).draw
+    end
+    
+    def process
+      case command
+      when "begin", "start"
+        render Lcars::UpperFrame, title: "", color: state.color if state.open?
+        render Lcars::LowerFrame, title: params.join(" ")
+      when "end"
+        render Lcars::UpperFrame, title: "", color: state.color
+        render Lcars::PromptFrame
+      else
+        render Lcars::SystemInfoFrame
+        render Lcars::PromptFrame
+      end
+    end
+  end
+  
+  class State
+    attr_accessor :session
+    
+    def initialize(session)
+      self.session = session
+    end
+    
+    def open?
+      session.frame == :open
+    end
+    
+    def color
+      session.color
+    end
+    
+    def set(args)
+      session.write args
+    end
+  end
+  
+  class Session
+    attr_accessor :id
+    
+    def initialize(session_id)
+      self.id = session_id
+    end
+    
+    def file
+      "/tmp/lcars_terminal_session_#{id}.rb"
+    end
+    
+    def read
+      if File.exists?(file)
+        eval(File.read(file))
+      else
+        {}
+      end
+    end
+    
+    def content
+      @session_content ||= read
+    end
+    
+    def write(args = {})
+      content.merge! args
+      File.write(file, @session_content)
+    end
+    
+    def method_missing(method, *args, &block)
+      property = method.to_s.gsub("=", "").gsub("?", "").to_sym
+      if method.to_s.end_with?("=")
+        content[property] = args.first
+      else
+        content[property]
+      end
+    end
+        
+  end
+  
   module SystemInfo
     def system_info
       keys = %w(OS Uptime CPU GPU RAM)
@@ -31,15 +132,16 @@ module Lcars
   end
   
   class Frame
+    attr_accessor :app
     attr_accessor :title
     attr_accessor :content
     attr_accessor :color
     
-    def initialize(options = {})
+    def initialize(app, options = {})
+      self.app = app
       self.title = options[:title]
       self.content = block_given? ? yield : ""
       self.color = options[:color] || next_color
-      self.draw
     end
     
     def number_of_cols
@@ -50,9 +152,15 @@ module Lcars
       [:blue, :magenta, :yellow, :cyan, :green]
     end
     
+    def former_color
+      app.state.color
+    end
+    
     def next_color
+      @@current_color_index = colors.find_index(former_color) if former_color
       @@current_color_index ||= -1
       @@current_color_index += 1
+      @@current_color_index = 0 if @@current_color_index > colors.count - 1
       colors[@@current_color_index]
     end
   end
@@ -72,8 +180,9 @@ module Lcars
         ]
       else
         parts = [
-          {str: "     ▇▇▇▇▇▇▇▇▇▇◗", color: color},
-          {str: placeholder, color: color}
+          {str: "     ▇▇▇▇▇▇▇▇▇▇▇", color: color},
+          {str: placeholder, color: color},
+          {str: "▇◗", color: color}
         ]
       end
       
@@ -95,6 +204,7 @@ module Lcars
       print "#{content_lines}\n"
       print " ▇▇▇▇▇▇▇▇▇▇▇▇\n".send(color)
       print "#{title_line}\n".send(color)
+      app.state.set frame: :closed, color: color
     end
   end
   
@@ -103,36 +213,35 @@ module Lcars
       print "#{title_line}\n".blue
       print " ▇▇▇▇▇▇▇▇▇▇▇▇\n".send(color)
       print "▇▇▇▇▇▇▇▇▇▇▇\n".send(color)
+      app.state.set frame: :open, color: color
     end
   end
   
   class SystemInfoFrame < UpperFrame
     include SystemInfo
     
-    def initialize
+    def initialize(*args)
+      super
       self.title = "Lcars"
       self.content = system_info
-      self.color = next_color
-      self.draw
+    end
+  end
+  
+  class PromptFrame < LowerFrame
+    def initialize(*args)
+      super
+      username = Lcars::SystemInfo.username
+      hostname = Lcars::SystemInfo.hostname
+      self.title = "#{username} • #{hostname}"
+    end
+    
+    def draw
+      super
+      print "\n\n"
     end
   end
 end
 
-command = ARGV.first
-args = ARGV[1..-1]
 
-case command
-when "begin", "start"
-  Lcars::LowerFrame.new(title: args.join(" "))
-when "end"
-  Lcars::UpperFrame.new(title: "") { " " }
-else
-  Lcars::SystemInfoFrame.new
-
-  username = Lcars::SystemInfo.username
-  hostname = Lcars::SystemInfo.hostname
-  
-  Lcars::LowerFrame.new(title: "#{username} • #{hostname}") do
-    "Test"
-  end
-end
+app = Lcars::Application.new(ARGV)
+app.process
