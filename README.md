@@ -402,7 +402,13 @@ Then the shread libraries can be included into the tex document:
 
 ### [lcars.plugin.zsh](oh-my-zsh-customization/plugins/lcars/lcars.plugin.zsh)
 
+<img src="screenshots/Bildschirmfoto 2017-07-20 um 23.41.49.png" width="500">
 Experimental lcars features.
+
+
+#### lcars command
+
+Prefix any command with `lcars` if you like.
 
 
 #### Play sound
@@ -573,4 +579,4 @@ I've taken this from mooos: https://github.com/idk/moo-skel
 
 ## Author
 
-(c) 2016, Sebastian Fiedlschuster
+(c) 2017, Sebastian Fiedlschuster

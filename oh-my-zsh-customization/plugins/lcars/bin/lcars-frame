@@ -37,7 +37,7 @@ module Lcars
     end
     
     def render(frame_class, args = {})
-      frame_class.new(self, args).draw
+      frame_class.new(self, args).render
     end
     
     def process
@@ -47,6 +47,31 @@ module Lcars
         render Lcars::LowerFrame, title: params.join(" "), content: "Starting at: #{Time.now}"
       when "end"
         render Lcars::UpperFrame, title: "", color: state.color, content: "Finished at: #{Time.now}"
+        render Lcars::PromptFrame
+      when "indent"
+        render Lcars::LineWithinFrame, content: params.join(" ") + "\n"
+      when "shell"
+        # https://github.com/fiedl/fiedl-log/blob/master/lib/fiedl/log/log.rb
+        shell_command = params.join(" ")
+        r, io = IO.pipe
+        render Lcars::LineWithinFrame
+        print "\n"
+        render Lcars::LineWithinFrame
+        fork do
+          system(shell_command, out: io, err: :out)
+        end
+        io.close
+        r.each_char{ |c| 
+          if c == "\n"
+            print "\n"
+            render Lcars::LineWithinFrame
+          else
+            print c
+          end
+        }
+        print "\n"
+        render Lcars::UpperFrame, title: "", color: state.color, content: "Finished at: #{Time.now}"
+        print "\n"
         render Lcars::PromptFrame
       else
         render Lcars::SystemInfoFrame
@@ -131,14 +156,51 @@ module Lcars
     end
   end
   
-  class Frame
+  class View
     attr_accessor :app
-    attr_accessor :title
-    attr_accessor :content
     attr_accessor :color
     
     def initialize(app, options = {})
       self.app = app
+      self.color = options[:color] || app.state.color
+    end
+    
+    def render
+      draw
+    end
+  end
+  
+  class LineWithinFrame < View
+    attr_accessor :content
+    
+    def initialize(app, options = {})
+      super
+      self.content = options[:content]
+    end
+    
+    def content_lines
+      if content.nil?
+        [""]
+      elsif (lines = content.split("\n")).count > 0
+        lines
+      else
+        [""]
+      end
+    end
+    
+    def draw
+      print content_lines.collect { |line|
+        "▇▇▇▇▇▇▇▇▇▇▇    ".send(self.color) + line
+      }.join("\n")
+    end
+  end
+  
+  class Frame < View
+    attr_accessor :title
+    attr_accessor :content
+    
+    def initialize(app, options = {})
+      super
       self.title = options[:title]
       self.content = options[:content] || (block_given? ? yield : nil) || " "
       self.color = options[:color] || next_color
@@ -237,7 +299,6 @@ module Lcars
     
     def draw
       super
-      print "\n\n"
     end
   end
 end
