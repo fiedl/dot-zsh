@@ -41,3 +41,9 @@ function lcars() {
   echo ""
   $ZSH_CUSTOM/plugins/lcars/bin/lcars-frame end
 }
+
+
+export TERM="xterm-256color"
+export POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="▇▇▇▇▇▇▇▇▇▇▇\n▇▇▇▇▇▇▇▇▇▇▇ "
+POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="▇▇▇▇▇▇▇▇▇▇▇ "

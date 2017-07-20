@@ -546,6 +546,7 @@ You may configure powerlevel9k in `~/.zshenv` using environment variables.
 But this plugin sets some nice defaults.
 
 See also: https://github.com/bhilburn/powerlevel9k/wiki/Stylizing-Your-Prompt
+And: https://gist.github.com/athityakumar/1bd5e9e24cd2a1891565573a893993eb
 
 
 
