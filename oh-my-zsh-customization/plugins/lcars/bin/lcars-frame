@@ -43,7 +43,7 @@ module Lcars
     def process
       case command
       when "begin", "start"
-        render Lcars::UpperFrame, title: "", color: state.color, content: " " if state.open?
+        render Lcars::UpperFrame, title: "", color: state.color if state.open?
         render Lcars::LowerFrame, title: params.join(" "), content: "Starting at: #{Time.now}"
       when "end"
         render Lcars::UpperFrame, title: "", color: state.color, content: "Finished at: #{Time.now}"
@@ -140,7 +140,7 @@ module Lcars
     def initialize(app, options = {})
       self.app = app
       self.title = options[:title]
-      self.content = options[:content] || (block_given? ? yield : "")
+      self.content = options[:content] || (block_given? ? yield : nil) || " "
       self.color = options[:color] || next_color
     end
     
