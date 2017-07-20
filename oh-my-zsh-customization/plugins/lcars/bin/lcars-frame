@@ -1,0 +1,138 @@
+#!/usr/bin/env ruby
+
+require 'colored'
+
+# ▇▇▇▇▇▇▇▇▇▇▇
+# ▇▇▇▇▇▇▇▇▇▇▇
+#  ▇▇▇▇▇▇▇▇▇▇▇▇
+#      ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ LCARS ▇▇▇▇▇▇▇▇▇▇▇
+#      ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ PROMPT ▇▇▇▇▇▇▇▇▇▇
+#  ▇▇▇▇▇▇▇▇▇▇▇▇     
+# ▇▇▇▇▇▇▇▇▇▇▇
+# ▇▇▇▇▇▇▇▇▇▇▇
+# ▇▇▇▇▇▇▇▇▇▇▇ 
+
+module Lcars
+  module SystemInfo
+    def system_info
+      keys = %w(OS Uptime CPU GPU RAM)
+      `~/.zsh/oh-my-zsh-customization/plugins/welcome/screenfetch -n`.split("\n").select { |line|
+        keys.any? { |key| line.include? key }
+      }.join("\n")
+    end
+    
+    def self.username
+      `whoami`.strip
+    end
+    
+    def self.hostname
+      `hostname`.strip
+    end
+  end
+  
+  class Frame
+    attr_accessor :title
+    attr_accessor :content
+    attr_accessor :color
+    
+    def initialize(options = {})
+      self.title = options[:title]
+      self.content = block_given? ? yield : ""
+      self.color = options[:color] || next_color
+      self.draw
+    end
+    
+    def number_of_cols
+      @@number_of_cols ||= `tput cols`.to_i
+    end
+    
+    def colors
+      [:blue, :magenta, :yellow, :cyan, :green]
+    end
+    
+    def next_color
+      @@current_color_index ||= -1
+      @@current_color_index += 1
+      colors[@@current_color_index]
+    end
+  end
+  
+  class SplitFrame < Frame
+    def title_line
+      placeholder = "FILLTHIS"
+      parts = []
+      
+      if title.length > 0
+        parts = [
+          {str: "     ▇▇▇▇▇▇▇▇▇▇▇", color: color},
+          {str: placeholder, color: color},
+          {str: "▇▇ ", color: color},
+          {str: title.upcase, color: :yellow},
+          {str: " ▇▇▇▇▇▇▇▇▇", color: color}
+        ]
+      else
+        parts = [
+          {str: "     ▇▇▇▇▇▇▇▇▇▇▇", color: color},
+          {str: placeholder, color: color}
+        ]
+      end
+      
+      number_of_fill_chars = number_of_cols - parts.collect { |part| part[:str] }.join.gsub(placeholder, "").length
+      parts
+        .collect { |part| part[:str].send(part[:color]) }.join
+        .gsub(placeholder, "▇" * number_of_fill_chars)
+    end
+    
+    def content_lines
+      content.split("\n").collect do |line|
+        "▇▇▇▇▇▇▇▇▇▇▇    ".send(color) + line
+      end.join("\n")
+    end
+  end
+  
+  class UpperFrame < SplitFrame
+    def draw
+      print "#{content_lines}\n"
+      print " ▇▇▇▇▇▇▇▇▇▇▇▇\n".send(color)
+      print "#{title_line}\n".send(color)
+    end
+  end
+  
+  class LowerFrame < SplitFrame
+    def draw
+      print "#{title_line}\n".blue
+      print " ▇▇▇▇▇▇▇▇▇▇▇▇\n".send(color)
+      print "▇▇▇▇▇▇▇▇▇▇▇\n".send(color)
+    end
+  end
+  
+  class SystemInfoFrame < UpperFrame
+    include SystemInfo
+    
+    def initialize
+      self.title = "Lcars"
+      self.content = system_info
+      self.color = next_color
+      self.draw
+    end
+  end
+end
+
+command = ARGV.first
+args = ARGV[1..-1]
+
+case command
+when "begin", "start"
+  Lcars::LowerFrame.new(title: args.join(" "))
+when "end"
+  Lcars::UpperFrame.new(title: "") { " " }
+else
+  Lcars::SystemInfoFrame.new
+
+  username = Lcars::SystemInfo.username
+  hostname = Lcars::SystemInfo.hostname
+  
+  Lcars::LowerFrame.new(title: "#{username} • #{hostname}") do
+    "Test"
+  end
+end

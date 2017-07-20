@@ -220,11 +220,6 @@ http://www.mfasold.net/blog/2008/11/moving-or-renaming-multiple-files/
 
 #### Fun stuff
 
-Play random lcars sound from `~/Music/lcars`.
-This requires `brew install mplayer coreutils`.
-
-    lcars
-
 Display the matrix.
 This requires `brew install cmatrix`.
 
@@ -405,6 +400,33 @@ Then the shread libraries can be included into the tex document:
 
 
 
+### [lcars.plugin.zsh](oh-my-zsh-customization/plugins/lcars/lcars.plugin.zsh)
+
+Experimental lcars features.
+
+
+#### Play sound
+
+Play random lcars sound from `~/Music/lcars`.
+This requires `brew install mplayer coreutils`.
+
+    lcars-sound
+
+
+#### Terminal lcars
+
+Display terminal head with system info in lcars style.
+
+    lcars-new
+
+This is executed when the plugin is included, i.e. don't use it
+together with the *welcoem* plugin.
+Wrap a command in an lcars frame.
+
+    lcars echo foo
+
+
+
 ### [moo.plugin.zsh](oh-my-zsh-customization/plugins/moo/moo.plugin.zsh)
 
 I have taken this excellent zsh configuration from mooOS, the gnu/linux
@@ -491,6 +513,39 @@ Run specs with selenium rather than phantomjs.
 Run parallel tests
 
     para spec/models
+
+The node js binary path `/usr/local/nodejs-binary/bin` is added to the `PATH`
+by this script.
+
+
+
+### [powerlevel.plugin.zsh](oh-my-zsh-customization/plugins/powerlevel/powerlevel.plugin.zsh)
+
+This plugin is for working with the powerlevel9k zsh theme.
+https://github.com/bhilburn/powerlevel9k
+
+
+#### Auto install
+
+If the directory `$ZSH_CUSTOM/themes/powerlevel9k`
+is missing, it is fetched from https://github.com/bhilburn/powerlevel9k.
+
+
+If you want to use the theme, please specify it in your `~/.zshrc`.
+
+    # ~/.zshrc
+    # ...
+    ZSH_THEME="powerlevel9k/powerlevel9k"
+
+See also: https://github.com/bhilburn/powerlevel9k/wiki/Install-Instructions
+
+
+#### Configuration
+
+You may configure powerlevel9k in `~/.zshenv` using environment variables.
+But this plugin sets some nice defaults.
+
+See also: https://github.com/bhilburn/powerlevel9k/wiki/Stylizing-Your-Prompt
 
 
 

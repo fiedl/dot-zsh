@@ -73,17 +73,11 @@ alias mmv='noglob zmv -W'
 
 # ## Fun stuff
 #
-# Play random lcars sound from `~/Music/lcars`.
-# This requires `brew install mplayer coreutils`.
-#
-#     lcars
-#
 # Display the matrix.
 # This requires `brew install cmatrix`.
 #
 #     matrix
 
-lcars() { $ZSH_CUSTOM/plugins/fiedl/bin/lcars > /dev/null 2>&1 }
 alias matrix='cmatrix -C magenta'
 
 
