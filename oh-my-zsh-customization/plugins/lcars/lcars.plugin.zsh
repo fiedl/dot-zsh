@@ -35,6 +35,7 @@ lcars-new
 
 function lcars() {
   lcars-sound
+  echo ""
   $ZSH_CUSTOM/plugins/lcars/bin/lcars-frame start $*
   echo ""
   $*
