@@ -21,7 +21,7 @@
 			}{
 				\textcolor{red}\entwurf\normalcolor
 			} \\
-			\currentsection\ifthenelse{\equal{\currentsubsection}{}}{}{: \currentsubsection}
+			\ifthenelse{\equal{\currentsubsection}{}}{}{\thesubsection \ \ }\currentsection\ifthenelse{\equal{\currentsubsection}{}}{}{: \currentsubsection}
 		}
   \endminipage
 }
