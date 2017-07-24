@@ -30,11 +30,3 @@ local prompt_symbol="%(?:▶:%{$fg[red]%}▶%s)"
 PROMPT="
 ${date_and_time} ${user_and_host} ${current_dir} ${git_branch}
 ${prompt_symbol} "
-
-# Update the current time until the command is executed.
-# https://stackoverflow.com/a/17915194/2066546
-#
-TMOUT=1
-TRAPALRM() {
-    zle reset-prompt
-}
