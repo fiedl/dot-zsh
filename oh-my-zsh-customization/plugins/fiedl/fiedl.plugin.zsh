@@ -57,6 +57,18 @@ alias count='wc -l'
 function nas-find () { grep --ignore-case "$*" /Volumes/Sebastian/.find.txt }
 alias nf='nas-find'
 
+# ## Follow files
+#
+# Tail a file and follow it, even if the file is deleted
+# and re-created.
+#
+#     tailf filename
+#
+# This needs the gnu verion of `tail`. Install it with
+# `brew install coreutils.`
+#
+alias tailf='gtail -f --follow=name --retry'
+
 
 # ## Moving files
 #
