@@ -7,5 +7,5 @@
 [[ -f /usr/local/bin/mplayer ]] || echo "/usr/local/bin/mplayer is missing." 
 
 zufall=$(for i in $HOME/Music/lcars/*; do echo $i; done |/usr/local/bin/gshuf -n 1);
-/usr/local/bin/mplayer $zufall >/dev/null &
+/usr/local/bin/mplayer -volume 5 $zufall >/dev/null &
 
