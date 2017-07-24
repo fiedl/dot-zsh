@@ -209,6 +209,17 @@ The above commands just grep in that file.
     0 2 * * * cd /share/Sebastian; /usr/bin/find ./ |sed -e 's/\.\//\/Volumes\/Sebastian\//g' > .find.tmp; /bin/rm .find.txt; /bin/mv .find.tmp .find.txt
 
 
+#### Follow files
+
+Tail a file and follow it, even if the file is deleted
+and re-created.
+
+    tailf filename
+
+This needs the gnu verion of `tail`. Install it with
+`brew install coreutils.`
+
+
 #### Moving files
 
 Move multiple files with wildcards using multimove.
@@ -427,10 +438,8 @@ Display terminal head with system info in lcars style.
 
 This is executed when the plugin is included, i.e. don't use it
 together with the *welcoem* plugin.
-Wrap a command in an lcars frame.
-
-    lcars echo foo
-
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="▇▇▇▇▇▇▇▇▇▇▇\n▇▇▇▇▇▇▇▇▇▇▇    "
+POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="▇▇▇▇▇▇▇▇▇▇▇    ➜ "
 ◖ button ◗
 export POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='◗ ◖'
 export POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR='◗ ◖'

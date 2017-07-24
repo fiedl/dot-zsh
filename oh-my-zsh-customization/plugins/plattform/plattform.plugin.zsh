@@ -114,7 +114,7 @@ alias doc='cdw && yardoc && chromium-browser doc/index.html && cdy && yardoc && 
 #     rspec
 #     rspec spec/models
 #
-rspec() { tab_orange; lcars; bin/rspec "$@"; lcars; tab-reset; }
+rspec() { tab_orange; lcars-start; bin/rspec "$@"; lcars-end; tab-reset; }
 
 # Run specs with selenium rather than phantomjs.
 #
@@ -129,7 +129,7 @@ alias selen='selenium'
 #
 #     para spec/models
 #
-para() { tab_orange; lcars; parallel_rspec "$@"; lcars; tab-reset; }
+para() { tab_orange; lcars-start; parallel_rspec "$@"; lcars-end; tab-reset; }
 
 # The node js binary path `/usr/local/nodejs-binary/bin` is added to the `PATH`
 # by this script.

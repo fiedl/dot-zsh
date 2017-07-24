@@ -6,7 +6,7 @@
 #
 # Prefix any command with `lcars` if you like.
 #
- 
+
 # ## Play sound
 #
 # Play random lcars sound from `~/Music/lcars`.
@@ -35,14 +35,17 @@ function lcars-new() {
 
 lcars-new
 
-# Wrap a command in an lcars frame.
-# 
-#     lcars echo foo
-#
-
 function lcars() {
   lcars-sound
-  $ZSH_CUSTOM/plugins/lcars/bin/lcars-frame shell $*
+}
+
+function lcars-start() {
+  lcars-sound
+}
+
+function lcars-end() {
+  echo ""
+  $ZSH_CUSTOM/plugins/lcars/bin/lcars-frame prompt
   lcars-sound
 }
 
@@ -54,8 +57,8 @@ POWERLEVEL9K_STATUS_BACKGROUND='yellow'
 POWERLEVEL9K_TIME_BACKGROUND='magenta'
 POWERLEVEL9K_TIME_FOREGROUND='black'
 
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="▇▇▇▇▇▇▇▇▇▇▇\n▇▇▇▇▇▇▇▇▇▇▇    "
-POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="▇▇▇▇▇▇▇▇▇▇▇    ➜ "
+# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="▇▇▇▇▇▇▇▇▇▇▇\n▇▇▇▇▇▇▇▇▇▇▇    "
+# POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX="▇▇▇▇▇▇▇▇▇▇▇    ➜ "
 
 # ◖ button ◗
 # export POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='◗ ◖'

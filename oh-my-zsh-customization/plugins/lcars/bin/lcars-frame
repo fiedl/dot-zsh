@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# coding: utf-8
 
 require 'colored'
 
@@ -7,7 +8,7 @@ require 'colored'
 #  ▇▇▇▇▇▇▇▇▇▇▇▇
 #      ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ LCARS ▇▇▇▇▇▇▇▇▇▇▇
 #      ▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇ PROMPT ▇▇▇▇▇▇▇▇▇▇
-#  ▇▇▇▇▇▇▇▇▇▇▇▇     
+#  ▇▇▇▇▇▇▇▇▇▇▇▇
 # ▇▇▇▇▇▇▇▇▇▇▇
 # ▇▇▇▇▇▇▇▇▇▇▇
 # ▇▇▇▇▇▇▇▇▇▇▇      ◖ button ◗	  ■■ 123 ◗
@@ -15,31 +16,31 @@ require 'colored'
 module Lcars
   class Application
     attr_accessor :command_line_arguments
-    
+
     def initialize(command_line_args)
       self.command_line_arguments = command_line_args
     end
-    
+
     def session
       @session ||= Session.new(ENV['TERM_SESSION_ID'])
     end
-    
+
     def state
       @state ||= State.new(session)
     end
-    
+
     def command
       command_line_arguments.first
     end
-    
+
     def params
       command_line_arguments[1..-1]
     end
-    
+
     def render(frame_class, args = {})
       frame_class.new(self, args).render
     end
-    
+
     def process
       case command
       when "begin", "start"
@@ -50,6 +51,9 @@ module Lcars
         render Lcars::PromptFrame
       when "indent"
         render Lcars::LineWithinFrame, content: params.join(" ") + "\n"
+      when "prompt"
+        render Lcars::UpperFrame, color: state.color if state.open?
+        render Lcars::PromptFrame
       when "shell"
         # https://github.com/fiedl/fiedl-log/blob/master/lib/fiedl/log/log.rb
         shell_command = params.join(" ")
@@ -61,7 +65,7 @@ module Lcars
           system(shell_command, out: io, err: :out)
         end
         io.close
-        r.each_char{ |c| 
+        r.each_char{ |c|
           if c == "\n"
             print "\n"
             render Lcars::LineWithinFrame
@@ -79,38 +83,38 @@ module Lcars
       end
     end
   end
-  
+
   class State
     attr_accessor :session
-    
+
     def initialize(session)
       self.session = session
     end
-    
+
     def open?
       session.frame == :open
     end
-    
+
     def color
       session.color
     end
-    
+
     def set(args)
       session.write args
     end
   end
-  
+
   class Session
     attr_accessor :id
-    
+
     def initialize(session_id)
       self.id = session_id
     end
-    
+
     def file
       "/tmp/lcars_terminal_session_#{id}.rb"
     end
-    
+
     def read
       if File.exists?(file)
         eval(File.read(file))
@@ -118,16 +122,16 @@ module Lcars
         {}
       end
     end
-    
+
     def content
       @session_content ||= read
     end
-    
+
     def write(args = {})
       content.merge! args
       File.write(file, @session_content)
     end
-    
+
     def method_missing(method, *args, &block)
       property = method.to_s.gsub("=", "").gsub("?", "").to_sym
       if method.to_s.end_with?("=")
@@ -136,9 +140,9 @@ module Lcars
         content[property]
       end
     end
-        
+
   end
-  
+
   module SystemInfo
     def system_info
       keys = %w(OS Uptime CPU GPU RAM)
@@ -146,38 +150,38 @@ module Lcars
         keys.any? { |key| line.include? key }
       }.join("\n")
     end
-    
+
     def self.username
       `whoami`.strip
     end
-    
+
     def self.hostname
       `hostname`.strip
     end
   end
-  
+
   class View
     attr_accessor :app
     attr_accessor :color
-    
+
     def initialize(app, options = {})
       self.app = app
       self.color = options[:color] || app.state.color
     end
-    
+
     def render
       draw
     end
   end
-  
+
   class LineWithinFrame < View
     attr_accessor :content
-    
+
     def initialize(app, options = {})
       super
       self.content = options[:content]
     end
-    
+
     def content_lines
       if content.nil?
         [""]
@@ -187,37 +191,37 @@ module Lcars
         [""]
       end
     end
-    
+
     def draw
       print content_lines.collect { |line|
         "▇▇▇▇▇▇▇▇▇▇▇    ".send(self.color) + line
       }.join("\n")
     end
   end
-  
+
   class Frame < View
     attr_accessor :title
     attr_accessor :content
-    
+
     def initialize(app, options = {})
       super
-      self.title = options[:title]
+      self.title = options[:title] ||= ""
       self.content = options[:content] || (block_given? ? yield : nil) || " "
       self.color = options[:color] || next_color
     end
-    
+
     def number_of_cols
       @@number_of_cols ||= `tput cols`.to_i
     end
-    
+
     def colors
       [:blue, :magenta, :yellow, :cyan, :green]
     end
-    
+
     def former_color
       app.state.color
     end
-    
+
     def next_color
       @@current_color_index = colors.find_index(former_color) if former_color
       @@current_color_index ||= -1
@@ -226,12 +230,12 @@ module Lcars
       colors[@@current_color_index]
     end
   end
-  
+
   class SplitFrame < Frame
     def title_line
       placeholder = "FILLTHIS"
       parts = []
-      
+
       if title.length > 0
         parts = [
           {str: "     ▇▇▇▇▇▇▇▇▇▇▇", color: color},
@@ -247,20 +251,20 @@ module Lcars
           {str: "▇◗", color: color}
         ]
       end
-      
+
       number_of_fill_chars = number_of_cols - parts.collect { |part| part[:str] }.join.gsub(placeholder, "").length
       parts
         .collect { |part| part[:str].send(part[:color]) }.join
         .gsub(placeholder, "▇" * number_of_fill_chars)
     end
-    
+
     def content_lines
       content.split("\n").collect do |line|
         "▇▇▇▇▇▇▇▇▇▇▇    ".send(color) + line
       end.join("\n")
     end
   end
-  
+
   class UpperFrame < SplitFrame
     def draw
       print "#{content_lines}\n"
@@ -269,7 +273,7 @@ module Lcars
       app.state.set frame: :closed, color: color
     end
   end
-  
+
   class LowerFrame < SplitFrame
     def draw
       print "#{title_line}\n".blue
@@ -278,17 +282,17 @@ module Lcars
       app.state.set frame: :open, color: color
     end
   end
-  
+
   class SystemInfoFrame < UpperFrame
     include SystemInfo
-    
+
     def initialize(*args)
       super
       self.title = "Lcars"
       self.content = system_info
     end
   end
-  
+
   class PromptFrame < LowerFrame
     def initialize(*args)
       super
@@ -296,7 +300,7 @@ module Lcars
       hostname = Lcars::SystemInfo.hostname
       self.title = "#{username} • #{hostname}"
     end
-    
+
     def draw
       super
     end
