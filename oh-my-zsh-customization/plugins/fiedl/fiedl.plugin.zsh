@@ -108,4 +108,4 @@ alias ka='pkill -f'
 #
 #     brew services restart elasticsearch
 
-alias service='brew services'
+[[ -f /usr/local/bin/brew ]] && alias service='brew services'
