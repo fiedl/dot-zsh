@@ -145,10 +145,7 @@ module Lcars
 
   module SystemInfo
     def system_info
-      keys = %w(OS Uptime CPU GPU RAM)
-      `~/.zsh/oh-my-zsh-customization/plugins/welcome/screenfetch -n`.split("\n").select { |line|
-        keys.any? { |key| line.include? key }
-      }.join("\n")
+      `neofetch --config ~/.zsh/oh-my-zsh-customization/plugins/lcars/neofetch.config`
     end
 
     def self.username
