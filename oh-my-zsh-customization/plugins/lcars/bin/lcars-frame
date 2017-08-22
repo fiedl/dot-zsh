@@ -112,7 +112,8 @@ module Lcars
     end
 
     def file
-      "/tmp/lcars_terminal_session_#{id}.rb"
+      @username ||= SystemInfo.username
+      "/tmp/lcars_terminal_session_#{id}_#{@username}.rb"
     end
 
     def read
