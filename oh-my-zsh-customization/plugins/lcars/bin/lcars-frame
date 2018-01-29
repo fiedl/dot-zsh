@@ -146,7 +146,7 @@ module Lcars
 
   module SystemInfo
     def system_info
-      `neofetch --config ~/.zsh/oh-my-zsh-customization/plugins/lcars/neofetch.config`
+      `~/.zsh/oh-my-zsh-customization/plugins/lcars/bin/neofetch --config ~/.zsh/oh-my-zsh-customization/plugins/lcars/neofetch.config`
     end
 
     def self.username
