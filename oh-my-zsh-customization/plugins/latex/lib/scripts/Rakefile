@@ -1,0 +1,135 @@
+# This is a Rakefile for producing a latex pdf.
+# Repo: https://github.com/fiedl/dot-zsh
+#
+# Just type `rake` to run it.
+
+task :default => [:info, :compile, :clean_markdown, :open]
+
+pdf_viewer = "open -a /Applications/Skim.app"
+
+require 'fiedl/log'
+
+def base_path
+  File.dirname(__FILE__)
+end
+
+def main_tex_file
+  File.basename Dir.glob("#{base_path}/*.tex").first
+end
+
+def project_name
+  File.basename main_tex_file, ".tex"
+end
+
+def current_tex_file
+  ENV['TM_FILEPATH']
+end
+
+def pdf_file
+  "build/#{project_name}.pdf"
+end
+
+def pdflatex_command
+  "pdflatex --output-directory=build -interaction=nonstopmode -file-line-error-style -shell-escape"
+end
+
+task :info do
+  log.head "LaTeX Rakefile"
+  log.info "Base directory: #{base_path}"
+  log.info "Main tex file: #{main_tex_file}"
+end
+
+task :compile => [:dependencies, :includeonly, :markdown] do
+  log.section "pdflatex"
+  sh "cd #{base_path} && #{pdflatex_command} #{main_tex_file}"
+end
+
+if current_tex_file
+  if current_tex_file.include? ".md.tex"
+    task :markdown => current_tex_file.gsub(".md.tex", ".tex").gsub(base_path + "/", "")
+  else
+    task :markdown => []
+  end
+else
+  multitask :markdown => FileList["text/*.md.tex"].ext('').ext('.tex')
+end
+
+FileList["text/*.md.tex"].each do |source|
+  file source.ext('').ext('.tex') => source do |t|
+    sh "cat #{source} |sed '/^%/d' > #{source.ext('tmp')}" # remove tex comments
+    sh "pandoc #{t.source.ext('tmp')} --from markdown --to latex > #{t.name}"
+    rm source.ext('tmp')
+  end
+end
+
+task :clean_markdown do
+  # If the compiling has been successfull, remove the temporary tex file
+  # that has been generated from *.md.tex in order to avoid that the user
+  # accidentally edits this file, because it will be overwritten again.
+  FileList["text/*.md.tex"].ext('').ext('.tex').each do |f|
+    rm f if File.exists?(f)
+  end
+end
+
+task :includeonly do
+  new_include_only_line = "%\\includeonly{}"
+  if current_tex_file && (not File.identical?(current_tex_file, main_tex_file))
+    log.section "includeonly"
+
+    relative_file_title = current_tex_file.gsub(base_path + "/", "").gsub(".tex", "").gsub(".md", "")
+    new_include_only_line = "\\includeonly{#{relative_file_title}}"
+
+    log.info "Current file: #{current_tex_file}"
+    log.info "Writing '#{new_include_only_line}' to #{main_tex_file}."
+  end
+
+  tex_code = File.read main_tex_file
+  tex_code = tex_code.split("\n").collect do |line|
+    if line.include? "\\includeonly{"
+      new_include_only_line
+    else
+      line
+    end
+  end.join("\n")
+  File.open(main_tex_file, 'w') { |f| f.write tex_code }
+end
+
+task :dependencies => [:build_directories, :images, :bibliography]
+
+task :build_directories do
+  log.info "Creating build directory structure. Otherwise, pdflatex will fail."
+  log.info "See https://tex.stackexchange.com/q/64313/70789."
+  sh "mkdir -p build/text/appendix"
+end
+
+multitask :images => [:tikz_images]
+
+multitask :tikz_images => FileList['img/*.tikz'].ext('pdf')
+
+FileList['img/*.tikz'].each do |source|
+  file source.ext('pdf') => source do
+    sh "cd img && pdflatex -interaction=nonstopmode -file-line-error-style #{File.basename(source)}"
+  end
+end
+
+task :bibliography => "build/#{project_name}.bbl"
+
+file "build/#{project_name}.bbl" do
+  log.section "Bibliography biber"
+  sh "biber build/#{project_name}"
+end
+
+task :open do
+  log.section "open"
+  sh "#{pdf_viewer} #{pdf_file}"
+end
+
+task :clean do
+  log.section "Cleaning up"
+  for extension in %w(aux bcf fdb_latexmk fls log pdf run.xml synctex.gz)
+    sh "rm build/*.#{extension} build/**/*.#{extension} || true"
+  end
+  for extension in %w(pdf log aux)
+    sh "rm img/*.#{extension} || true"
+  end
+end
