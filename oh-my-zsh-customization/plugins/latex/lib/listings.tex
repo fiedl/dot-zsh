@@ -1,0 +1,18 @@
+% Highlighted code listings, https://ctan.org/pkg/minted
+%
+% This requires pygments.
+%
+%     pip install Pygments
+%     cd /Library/TeX/texbin
+%     sudo ln -s `which pygmentize` pygmentize
+%     sudo tlmgr install fvextra
+%     sudo tlmgr update minted
+%
+\usepackage[outputdir=./build]{minted}
+
+\setminted[python]{
+  tabsize=2 ,linenos, breaklines, autogobble, breakautoindent, frame=lines, framesep=2mm
+}
+
+\newenvironment{python}{\minted{python}}{\endminted}
+\newcommand\pythoninput[1]{\inputminted{python}{#1}}
