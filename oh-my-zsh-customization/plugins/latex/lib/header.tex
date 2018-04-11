@@ -1,6 +1,15 @@
 % This file is responsible for the page header.
 
 \usepackage{fancyhdr}
+\usepackage{xspace}
+
+\newcommand{\fancyfootfont}[1]{\footnotesize\textsf{#1}}
+
+% https://tex.stackexchange.com/a/68310/70789
+\makeatletter
+\let\runauthor\@author
+\let\runtitle\@title
+\makeatother
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -14,27 +23,28 @@
   \footnotesize
   \minipage{10cm}%
     \textsf{%
-      \textbf{{\dokumententitel}},
-			\dokumentid,
-			\ifthenelse{\equal{\entwurf}{}}{
-				\datum
-			}{
-				\textcolor{red}\entwurf\normalcolor
-			} \\
-			\ifthenelse{\equal{\currentsubsection}{}}{}{\thesubsection \ \ }\currentsection\ifthenelse{\equal{\currentsubsection}{}}{}{: \currentsubsection}
-		}
+      \textbf{{\runtitle}}%
+      \ifdef{\dokumentid}{\xspace, \dokumentid}{}%
+      \ifdef{\entwurf}{\xspace, Draft \entwurf}{}%
+      %\ifthenelse{\equal{\entwurf}{}}{
+      %	\datum
+      %}{
+      %	\textcolor{red}\entwurf\normalcolor
+      %} \\
+      \ifthenelse{\equal{\currentsubsection}{}}{}{\thesubsection \ \ }\currentsection\ifthenelse{\equal{\currentsubsection}{}}{}{: \currentsubsection}
+    }
   \endminipage
 }
 
 \fancyhead[C]{}
 
-\fancyhead[OR]{\logo}
+\ifdef{\logo}{\fancyhead[OR]{\logo}}{\fancyhead[OR]{\fancyfootfont{\runauthor}}}
 
 \renewcommand{\headrulewidth}{0.0pt} %obere Trennlinie
 \addtolength{\headheight}{2\baselineskip} % noch etwas Platz
 
 \fancyfoot[OL]{}
 \fancyfoot[C]{}
-\fancyfoot[OR,EL]{\vspace{2cm}\fancyfootfont{ Seite \thepage}}
+\fancyfoot[OR,EL]{\vspace{2cm}\fancyfootfont{ \pageStr\ \thepage}}
 
 \renewcommand{\footrulewidth}{0.0pt} %untere Trennlinie

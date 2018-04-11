@@ -10,9 +10,17 @@
 %
 \usepackage[outputdir=./build]{minted}
 
-\setminted[python]{
-  tabsize=2 ,linenos, breaklines, autogobble, breakautoindent, frame=lines, framesep=2mm
+\setminted{
+  tabsize=2, linenos, breaklines, autogobble, breakautoindent, frame=lines, framesep=2mm
 }
 
 \newenvironment{python}{\minted{python}}{\endminted}
 \newcommand\pythoninput[1]{\inputminted{python}{#1}}
+
+\newenvironment{ccode}{\minted{c}}{\endminted}
+
+\setminted[bash]{
+  linenos=false
+}
+
+\newenvironment{bash}{\minted{bash}}{\endminted}

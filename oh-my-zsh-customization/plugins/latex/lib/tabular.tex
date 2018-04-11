@@ -6,7 +6,11 @@
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcolumntype{R}{>{\raggedleft\arraybackslash}X}
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
-%\renewcommand\tabularxcolumn[1]{m{#1}}
+
+% vertical alignment
+\renewcommand\tabularxcolumn[1]{m{#1}}
+
+
 \newenvironment{tabelle}[1]%
 {%
 \renewcommand{\oldarraystretch}{\arraystretch}

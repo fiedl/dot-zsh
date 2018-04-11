@@ -1,0 +1,51 @@
+\usepackage{pgfshade}
+\usetheme{Warsaw}
+\setbeamercovered{transparent}
+\usecolortheme{seahorse}
+
+\beamertemplatenavigationsymbolsempty
+
+\newcommand{\vtiny}{\fontsize{6}{1}\selectfont}
+\usepackage[absolute,overlay]{textpos}
+
+\newcommand{\zitat}[2]{
+  \textit{\frqq#1 \flqq}\\
+  \begin{flushright}
+    -- #2
+  \end{flushright}
+}
+\newcommand{\source}[1]{
+  \begin{textblock*}{\linewidth}(1cm,.92\paperheight)
+    \vtiny Source: #1
+  \end{textblock*}
+}
+\newcommand{\symbole}[1]{
+  \begin{textblock*}{\linewidth}(1cm,.79\paperheight)
+    \parbox{0.75\linewidth}{\vtiny #1}
+  \end{textblock*}
+}
+\newcommand{\name}[1]{
+  \textsc{#1}
+}
+
+\newcommand\follows{\item[$\rightarrow$]}
+
+\setminted[bash]{
+  linenos=false,
+  fontsize=\scriptsize,
+  baselinestretch=1
+}
+
+\newenvironment{smallbash}{\minted[fontsize=\tiny]{bash}}{\endminted}
+
+\newenvironment{sideimage}[1]
+  {
+    \vspace{6mm}
+    \hspace*{-4mm}
+    \minipage{0.5\textwidth}
+      \includegraphics[width=\textwidth]{#1}
+    \endminipage
+    \hspace*{8mm}
+    \minipage{0.5\textwidth}
+  }
+  {\endminipage}
