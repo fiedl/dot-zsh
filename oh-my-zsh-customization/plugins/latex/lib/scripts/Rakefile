@@ -33,6 +33,10 @@ def pdflatex_command
   "pdflatex --output-directory=build -interaction=nonstopmode -file-line-error-style -shell-escape"
 end
 
+def include_only_a_part?
+  current_tex_file && (not File.identical?(current_tex_file, main_tex_file))
+end
+
 task :info do
   log.head "LaTeX Rakefile"
   log.info "Base directory: #{base_path}"
@@ -44,7 +48,7 @@ task :compile => [:dependencies, :includeonly, :markdown] do
   sh "cd #{base_path} && #{pdflatex_command} #{main_tex_file}"
 end
 
-if current_tex_file
+if include_only_a_part?
   if current_tex_file.include? ".md.tex"
     task :markdown => current_tex_file.gsub(".md.tex", ".tex").gsub(base_path + "/", "")
   else
@@ -73,7 +77,7 @@ end
 
 task :includeonly do
   new_include_only_line = "%\\includeonly{}"
-  if current_tex_file && (not File.identical?(current_tex_file, main_tex_file))
+  if include_only_a_part?
     log.section "includeonly"
 
     relative_file_title = current_tex_file.gsub(base_path + "/", "").gsub(".tex", "").gsub(".md", "")
@@ -115,8 +119,10 @@ end
 task :bibliography => "build/#{project_name}.bbl"
 
 file "build/#{project_name}.bbl" do
-  log.section "Bibliography biber"
-  sh "biber build/#{project_name}"
+  if File.exists?("build/#{project_name}.bib")
+    log.section "Bibliography biber"
+    sh "biber build/#{project_name}"
+  end
 end
 
 task :open do
