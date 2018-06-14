@@ -2,7 +2,7 @@
 
 My zsh configuration. I'm using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and place some overrides in `~/.zsh`.
 
-<img src="screenshots/Bildschirmfoto 2016-08-17 um 01.36.58.png" width="500">
+<img src="screenshots/Bildschirmfoto 2018-06-14 um 17.53.37.png" width="500">
 
 ## Installation
 
@@ -44,7 +44,7 @@ export DISABLE_UPDATE_PROMPT="false"
 export UPDATE_ZSH_DAYS=1
 
 # choose oh-my-zsh plugins
-plugins=(git bundler editor auto-update highlight fiedl icecube install plattform keyboard latex welcome)
+plugins=(git bundler editor auto-update highlight fiedl icecube gnuplot install plattform latex powerlevel lcars)
 source $ZSH/oh-my-zsh.sh
 ```
 
