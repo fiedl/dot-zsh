@@ -30,3 +30,14 @@ local prompt_symbol="%(?:▶:%{$fg[red]%}▶%s)"
 PROMPT="
 ${date_and_time} ${user_and_host} ${current_dir} ${git_branch}
 ${prompt_symbol} "
+
+# # https://stackoverflow.com/a/17915194/2066546, https://gist.github.com/shvchk/f0d75441c067939a63815755c306d8d8
+# # Unfortunately breaks arrow-up history.
+#
+# TMOUT=1
+# 
+# TRAPALRM() {
+#     if ! [[ "$WIDGET" =~ ^(complete-word|fzf-completion|expand-or-complete|.*beginning-search)$ ]]; then
+#         zle reset-prompt
+#     fi
+# }
