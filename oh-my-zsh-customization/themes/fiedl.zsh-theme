@@ -24,9 +24,10 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}⚡"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 local git_branch='$(git_prompt_info)%{$reset_color%}'
+local git_commit='$(git_prompt_short_sha)'
 
 local prompt_symbol="%(?:▶:%{$fg[red]%}▶%s)"
 
 PROMPT="
-${date_and_time} ${user_and_host} ${current_dir} ${git_branch}
+${date_and_time} ${user_and_host} ${current_dir} ${git_branch} ${git_commit}
 ${prompt_symbol} "
