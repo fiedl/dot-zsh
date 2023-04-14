@@ -117,7 +117,7 @@ module Lcars
     end
 
     def read
-      if File.exists?(file)
+      if File.exist?(file)
         eval(File.read(file))
       else
         {}
