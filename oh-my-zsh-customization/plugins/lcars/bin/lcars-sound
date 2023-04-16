@@ -3,9 +3,6 @@
 # run this through apple script via:
 # do shell script "source /Users/fiedl/bin/lcars"
 
-[[ -f /usr/local/bin/gshuf ]] || echo "/usr/local/bin/gshuf is missing." 
-[[ -f /usr/local/bin/mplayer ]] || echo "/usr/local/bin/mplayer is missing." 
-
-zufall=$(for i in $HOME/Music/lcars/*; do echo $i; done |/usr/local/bin/gshuf -n 1);
-/usr/local/bin/mplayer -volume 5 $zufall >/dev/null &
+zufall=$(for i in $HOME/Music/lcars/*; do echo $i; done | gshuf -n 1);
+mplayer -volume 5 $zufall >/dev/null &
 
