@@ -2,7 +2,7 @@
 
 My zsh configuration. I'm using [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) and place some overrides in `~/.zsh`.
 
-<img src="screenshots/Bildschirmfoto 2018-06-14 um 17.53.37.png" width="500">
+<img src="screenshots/Bildschirm­foto 2023-04-16 um 22.03.23.png" width="500">
 
 ## Installation
 
