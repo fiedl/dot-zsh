@@ -44,7 +44,7 @@ export DISABLE_UPDATE_PROMPT="false"
 export UPDATE_ZSH_DAYS=1
 
 # choose oh-my-zsh plugins
-plugins=(git bundler editor auto-update highlight fiedl icecube gnuplot rails iterm powerlevel lcars)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting editor auto-update highlight fiedl icecube gnuplot rails iterm powerlevel lcars)
 source $ZSH/oh-my-zsh.sh
 ```
 
