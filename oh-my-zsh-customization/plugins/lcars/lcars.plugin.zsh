@@ -70,3 +70,10 @@ POWERLEVEL9K_TIME_FOREGROUND='black'
 # export POWERLEVEL9K_LEFT_SEGMENT_END_SEPARATOR='◗ ◖'
 # export POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR='◗ ◖'
 # export POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR='◗ ◖'
+
+# Wrap each command within lcars sound and tab-color change
+lcars_run_before_each_command() { tab-blue; lcars-sound }
+lcars_run_after_each_command() { tab-reset; lcars-sound }
+add-zsh-hook preexec lcars_run_before_each_command
+add-zsh-hook precmd lcars_run_after_each_command
+
