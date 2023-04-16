@@ -15,7 +15,11 @@
 #     lcars-sound
 #
 
-lcars-sound() { $ZSH_CUSTOM/plugins/lcars/bin/lcars-sound > /dev/null 2>&1 }
+lcars-sound() {
+  if [[ -z $(ps aux | grep mplayer | grep lcars | grep -v grep) ]]; then
+    $ZSH_CUSTOM/plugins/lcars/bin/lcars-sound > /dev/null 2>&1
+  fi
+}
 
 # ## Terminal lcars
 #
