@@ -21,7 +21,9 @@ alias sudo='sudo '
 gre() { grep --recursive --regexp="$@" --exclude-dir=log --exclude-dir=coverage --exclude-dir=neo4j --exclude-dir=tmp --exclude-dir=.git . ; }
 
 unalias g
-function g () { tput rmam; grep --exclude-dir log --exclude-dir tmp --exclude-dir .yardoc --exclude-dir doc --exclude-dir coverage --exclude-dir vendor --exclude-dir node_modules --recursive --line-number "$*" . ; tput smam }  # --ignore-case
+#function g () { tput rmam; grep --exclude-dir log --exclude-dir tmp --exclude-dir .yardoc --exclude-dir doc --exclude-dir coverage --exclude-dir vendor --exclude-dir node_modules --recursive --line-number "$*" . ; tput smam }  # --ignore-case
+#function g () { grep --exclude-dir log --exclude-dir tmp --exclude-dir .yardoc --exclude-dir doc --exclude-dir coverage --exclude-dir vendor --exclude-dir node_modules --recursive --line-number "$*" . |less --chop-long-lines --no-init }  # --ignore-case
+function g () { grep --exclude-dir log --exclude-dir tmp --exclude-dir .yardoc --exclude-dir doc --exclude-dir coverage --exclude-dir vendor --exclude-dir node_modules --exclude-dir packs --exclude-dir packs-test --recursive --line-number "$*" . }  # --ignore-case
 function def () { g "def $*"; g "def self.$*" }
 
 
