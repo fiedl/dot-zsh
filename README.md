@@ -44,7 +44,7 @@ export DISABLE_UPDATE_PROMPT="false"
 export UPDATE_ZSH_DAYS=1
 
 # choose oh-my-zsh plugins
-plugins=(git bundler editor auto-update highlight fiedl icecube gnuplot install plattform latex powerlevel lcars)
+plugins=(git bundler editor auto-update highlight fiedl icecube gnuplot install plattform powerlevel lcars)
 source $ZSH/oh-my-zsh.sh
 ```
 
@@ -337,6 +337,25 @@ Or, in German (for parents :-) )
 
 
 
+### [iterm.plugin.zsh](oh-my-zsh-customization/plugins/iterm/iterm.plugin.zsh)
+
+https://gist.github.com/wadey/1140259/e3a14d2fcecdebdc67fe193a9bd0264d8bec45a0
+ if [[ -n "$ITERM_SESSION_ID" ]]; then
+   trap "tab-reset" INT EXIT
+   if [[ "$*" =~ "k154dckr030|production" ]]; then
+     tab-color 255 0 0
+   elif [[ "$*" =~ "10.10.11.58|staging" ]]; then
+     tab-color 255 255 0
+   elif [[ "$*" =~ "k154dckr030" ]]; then
+     tab-color 255 0 0
+   else
+     tab-color 0 255 0
+   fi
+ fi
+ /usr/bin/ssh $*
+
+
+
 ### [keyboard.plugin.zsh](oh-my-zsh-customization/plugins/keyboard/keyboard.plugin.zsh)
 
 
@@ -375,39 +394,6 @@ Manual: https://pqrs.org/osx/karabiner/xml.html.en
 To edit this file, just type:
 
     key-maps
-
-
-
-### [latex.plugin.zsh](oh-my-zsh-customization/plugins/latex/latex.plugin.zsh)
-
-
-#### Shared libraries
-
-This repository contains some shared libraries and extensions
-I use in my latex projects.
-
-They can be symlinked or hardlinked into existing projects:
-
-    cd /path/to/my/latex/project
-    ln -s ~/.zsh/oh-my-zsh-customization/plugins/latex/lib lib
-    hln ~/.zsh/oh-my-zsh-customization/plugins/latex/lib lib
-
-Or, with this extension, short:
-
-    cd /path/to/my/latex/project
-    latex-link-lib
-    latex-unlink-lib
-
-When hardlinked, the lib directory is included in git's source control.
-
-The `hln` command is defined in https://github.com/selkhateeb/hardlink
-and can be installed on mac os using `brew install hardlink-osx`.
-
-Then the shread libraries can be included into the tex document:
-
-    % /path/to/my/latex/project/main.tex
-    % ...
-    % \input{lib/todo}
 
 
 
@@ -582,6 +568,14 @@ Install with `brew install screenfetch`.
 Next to the starfleet sign, of course :)
 
 I've taken this from mooos: https://github.com/idk/moo-skel
+
+
+### [zsh-autosuggestions.plugin.zsh](oh-my-zsh-customization/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh)
+
+
+
+### [zsh-syntax-highlighting.plugin.zsh](oh-my-zsh-customization/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh)
+
 
 
 
